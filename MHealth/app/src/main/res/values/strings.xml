@@ -4,4 +4,7 @@
     <string name="tab_text_1">SINTOMES</string>
     <string name="tab_text_2">PRIMERS AUXILIS</string>
     <string name="tab_text_3">NOTÍCIES</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

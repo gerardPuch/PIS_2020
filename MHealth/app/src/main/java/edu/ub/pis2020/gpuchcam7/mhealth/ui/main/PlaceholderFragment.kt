@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import edu.ub.pis2020.gpuchcam7.mhealth.GuiaFragment
+import edu.ub.pis2020.gpuchcam7.mhealth.NewsFragment
 import edu.ub.pis2020.gpuchcam7.mhealth.R
+import edu.ub.pis2020.gpuchcam7.mhealth.SintomasFragment
 
 /**
  * A placeholder fragment containing a simple view.
@@ -48,12 +53,15 @@ class PlaceholderFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
-                }
+        fun newInstance(sectionNumber: Int): Fragment? {
+            var fragment: Fragment? = null
+
+            when (sectionNumber){
+                1 -> fragment = SintomasFragment()
+                2 -> fragment = GuiaFragment()
+                3 -> fragment = NewsFragment()
             }
+            return fragment
         }
     }
 }
