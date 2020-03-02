@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun StartApp(view: View) {
-        val intent = Intent(this, Test::class.java)
+        val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
     }
 }
