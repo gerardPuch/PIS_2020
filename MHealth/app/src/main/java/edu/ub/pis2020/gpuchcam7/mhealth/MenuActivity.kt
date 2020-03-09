@@ -1,5 +1,6 @@
 package edu.ub.pis2020.gpuchcam7.mhealth
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -8,6 +9,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import edu.ub.pis2020.gpuchcam7.mhealth.ui.main.SectionsPagerAdapter
 
 class MenuActivity : AppCompatActivity() {
