@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class Source {
 
-    @SerializedName("id")
+    /*@SerializedName("id")
     @Expose
     val id: String = ""
 
@@ -15,5 +15,5 @@ class Source {
 
     fun getId(): String{
         return id;
-    }
+    }*/
 }
