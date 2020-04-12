@@ -5,15 +5,27 @@ import com.google.gson.annotations.SerializedName
 
 class Source {
 
-    /*@SerializedName("id")
+    @SerializedName("id")
     @Expose
-    val id: String = ""
+    var id: String = ""
 
     @SerializedName("name")
     @Expose
-    val name: String = ""
+    var name: String = ""
 
-    fun getId(): String{
-        return id;
-    }*/
+    public fun getid(): String{
+        return id
+    }
+
+    public fun setid(new: String){
+        id = new
+    }
+
+    public fun getname(): String{
+        return name
+    }
+
+    public fun setname(new: String){
+        name = new
+    }
 }
