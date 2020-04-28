@@ -59,7 +59,7 @@ class NewsFragment : Fragment() {
         mService = Common.newsService
 
         //Init View
-        swipe_to_refresh.setOnRefreshListener {
+        /*swipe_to_refresh.setOnRefreshListener{
             loadWebSiteSource(true)
         }
 
@@ -70,7 +70,7 @@ class NewsFragment : Fragment() {
         dialog = SpotsDialog(activity)
 
         loadWebSiteSource(false)
-        /*-----------*/
+        /*-----------*/*/
     }
 
     /*IMPLEMENTAT*/

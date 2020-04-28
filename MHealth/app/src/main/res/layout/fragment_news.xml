@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipe_to_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewsFragment">
+    tools:context=".NewsFragment"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_source_news"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"/>
+            android:layout_height="match_parent">
 
-    </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_source_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"/>
 
-    <!-- TODO: Update blank fragment layout -->
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,5 +32,4 @@
         android:text="OMS"
         android:textSize="50sp" />
 
-//API KEY: 52d4d09a2cdc408a8e7b94bac7ba97be
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>
