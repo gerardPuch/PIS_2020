@@ -34,7 +34,10 @@ class NewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         //Init cache DB
         Paper.init(activity)
 
@@ -42,9 +45,10 @@ class NewsFragment : Fragment() {
         mService = Common.newsService
 
         //Init View
-        /*swipe_to_refresh.setOnRefreshListener{
+        swipe_to_refresh.setOnRefreshListener{
             loadWebSiteSource(true)
         }
+
 
         recycler_view_source_news.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
@@ -53,7 +57,21 @@ class NewsFragment : Fragment() {
         dialog = SpotsDialog(activity)
 
         loadWebSiteSource(false)
-        */
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_news, container, false)
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         */
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            NewsFragment().apply {}
     }
 
     private fun loadWebSiteSource (isRefresh: Boolean) {
@@ -109,20 +127,5 @@ class NewsFragment : Fragment() {
                 }
             })
         }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         */
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewsFragment().apply {}
     }
 }
