@@ -49,7 +49,6 @@ class NewsFragment : Fragment() {
             loadWebSiteSource(true)
         }
 
-
         recycler_view_source_news.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
         recycler_view_source_news.layoutManager = layoutManager

@@ -16,7 +16,9 @@ class ListSourceAdapter (private val context: Context, private val webSite: Webs
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListSourceViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.source_news_layout, parent, false)
-        return ListSourceViewHolder(itemView)
+        return ListSourceViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount(): Int {
