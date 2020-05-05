@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711261319264",
+    "firebase_url": "https://mhealth-de392.firebaseio.com",
+    "project_id": "mhealth-de392",
+    "storage_bucket": "mhealth-de392.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711261319264:android:2ad3bcd66047dcac5bd305",
+        "android_client_info": {
+          "package_name": "com.indeed.mHealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711261319264-27s7ccfrc2mkkmk38aks4t2uu9hgi70q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFAX2qJY2jaUiS-M9UaKQLzrCqcgzKUJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711261319264-27s7ccfrc2mkkmk38aks4t2uu9hgi70q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
