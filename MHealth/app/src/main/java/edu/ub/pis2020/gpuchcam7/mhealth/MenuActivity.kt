@@ -1,5 +1,6 @@
 package edu.ub.pis2020.gpuchcam7.mhealth
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -13,6 +14,11 @@ import android.view.View
 import edu.ub.pis2020.gpuchcam7.mhealth.ui.main.SectionsPagerAdapter
 
 class MenuActivity : AppCompatActivity() {
+    val context: Context
+
+    init {
+        this.context = applicationContext
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +36,10 @@ class MenuActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }*/
+    }
+
+    fun getMenuContext(): Context {
+        return this.context
     }
 
     fun Next(view: View) {

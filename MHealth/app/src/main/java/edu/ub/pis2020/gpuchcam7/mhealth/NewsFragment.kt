@@ -1,6 +1,7 @@
 package edu.ub.pis2020.gpuchcam7.mhealth
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,6 +32,8 @@ class NewsFragment : Fragment() {
     lateinit var mService: NewsService
     lateinit var adapter: ListSourceAdapter
     lateinit var dialog: AlertDialog
+
+    lateinit var parentContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
