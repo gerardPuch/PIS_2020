@@ -1,4 +1,4 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Model
+package edu.ub.pis2020.gpuchcam7.mhealth.Sintomas
 
 class Sintomas {
     val ListSintomas = mutableListOf<String>(
@@ -10,8 +10,6 @@ class Sintomas {
         "Disnea",
         "Dolor",
             "Abdomen",
-            "Articulacions",
-                "Articculacio_1",
             "Cap",
             "Coll",
             "Dents",
@@ -21,6 +19,8 @@ class Sintomas {
             "Parts Baixes",
             "Pit",
             "Ulls",
+        "Dolor Articulacions",
+            "Articculacio_1",
         "Febre",
         "Mareig",
         "Mocs",

@@ -14,11 +14,11 @@ import android.view.View
 import edu.ub.pis2020.gpuchcam7.mhealth.ui.main.SectionsPagerAdapter
 
 class MenuActivity : AppCompatActivity() {
-    val context: Context
+    /*val context: Context
 
     init {
         this.context = applicationContext
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +38,9 @@ class MenuActivity : AppCompatActivity() {
         }*/
     }
 
-    fun getMenuContext(): Context {
+    /*fun getMenuContext(): Context {
         return this.context
-    }
+    }*/
 
     fun Next(view: View) {
         val intent = Intent(this, SintomasActivity::class.java)

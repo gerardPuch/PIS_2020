@@ -43,80 +43,72 @@
                 <CheckBox
                     android:id="@+id/Sintoma1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_1" />
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/Spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_2" />
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_3" />
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/Spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/Spinner3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_4" />
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_5" />
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_6" />
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma7"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_7" />
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_8" />
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/Spinner4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma9"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_9" />
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma10"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_10" />
-
-                <CheckBox
-                    android:id="@+id/Sintoma11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_11" />
-
-                <CheckBox
-                    android:id="@+id/Sintoma12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_12" />
-
-                <CheckBox
-                    android:id="@+id/Sintoma13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Sintoma_13" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
         </ScrollView>
