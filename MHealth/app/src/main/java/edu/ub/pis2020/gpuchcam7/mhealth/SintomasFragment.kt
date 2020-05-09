@@ -87,6 +87,8 @@ class SintomasFragment : Fragment() {
         Sintoma1.setText(ListSintomas.getSintoma(0))
 
         //Spinner 1 (S1) : Arritmies
+            var S1Title: SpinnerItem = SpinnerItem()
+            S1Title.initializeItem(ListSintomas.getSintoma(1))
             //Bardicardia
             var item1: SpinnerItem = SpinnerItem()
             item1.initializeItem(ListSintomas.getSintoma(2))
@@ -94,12 +96,14 @@ class SintomasFragment : Fragment() {
             var item2: SpinnerItem = SpinnerItem()
             item2.initializeItem(ListSintomas.getSintoma(3))
 
-            ListS1 = mutableListOf(item1, item2)
+            ListS1 = mutableListOf(S1Title, item1, item2)
         //Diarrea
         Sintoma2.setText(ListSintomas.getSintoma(4))
         //Disnea
         Sintoma3.setText(ListSintomas.getSintoma(5))
         //Spinner 2 (S2) : Dolor
+            var S2Title: SpinnerItem = SpinnerItem()
+            S2Title.initializeItem(ListSintomas.getSintoma(6))
             //Abdomen
             var item3: SpinnerItem = SpinnerItem()
             item3.initializeItem(ListSintomas.getSintoma(7))
@@ -131,13 +135,15 @@ class SintomasFragment : Fragment() {
             var item12: SpinnerItem = SpinnerItem()
             item12.initializeItem(ListSintomas.getSintoma(16))
 
-            ListS2 = mutableListOf(item3, item4, item5, item6, item7, item8, item9, item10, item11, item12)
+            ListS2 = mutableListOf(S2Title, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12)
         //Spinner 3 (S3) : Dolor Articulacions
+            var S3Title: SpinnerItem = SpinnerItem()
+            S3Title.initializeItem(ListSintomas.getSintoma(17))
             //Articculacio_1
             var item13: SpinnerItem = SpinnerItem()
             item13.initializeItem(ListSintomas.getSintoma(18))
 
-            ListS3 = mutableListOf(item13)
+            ListS3 = mutableListOf(S3Title, item13)
         //Febre
         Sintoma4.setText(ListSintomas.getSintoma(19))
         //Mareig
@@ -149,11 +155,13 @@ class SintomasFragment : Fragment() {
         //Pèrdua de coneixement
         Sintoma8.setText(ListSintomas.getSintoma(23))
         //Spinner 4 (S4) : Sagnat
+            var S4Title: SpinnerItem = SpinnerItem()
+            S4Title.initializeItem(ListSintomas.getSintoma(24))
             //Forat1
             var item14: SpinnerItem = SpinnerItem()
             item14.initializeItem(ListSintomas.getSintoma(25))
 
-            ListS4 = mutableListOf(item14)
+            ListS4 = mutableListOf(S4Title, item14)
         //Tos
         Sintoma9.setText(ListSintomas.getSintoma(26))
         //Vómit
