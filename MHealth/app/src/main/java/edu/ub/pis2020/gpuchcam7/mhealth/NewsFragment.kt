@@ -35,11 +35,17 @@ class NewsFragment : Fragment() {
 
     lateinit var parentContext: Context
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        this.parentContext = context!!
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //Init cache DB
-        Paper.init(activity)
+        Paper.init(parentContext)
 
         //Init Servicio
         mService = Common.newsService
@@ -54,10 +60,10 @@ class NewsFragment : Fragment() {
         }
 
         recycler_view_source_news.setHasFixedSize(true)
-        layoutManager = LinearLayoutManager(activity)
+        layoutManager = LinearLayoutManager(parentContext)
         recycler_view_source_news.layoutManager = layoutManager
 
-        dialog = SpotsDialog(activity)
+        dialog = SpotsDialog(parentContext)
 
         loadWebSiteSource(false)
     }
@@ -83,7 +89,7 @@ class NewsFragment : Fragment() {
             if(cache != null && !cache.isBlank() && cache != "null"){
                 //Leer Cache
                 val webSite = Gson().fromJson<Website>(cache, Website::class.java)
-                adapter = ListSourceAdapter(activity!!.baseContext, webSite)
+                adapter = ListSourceAdapter(parentContext, webSite)
                 adapter.notifyDataSetChanged()
                 recycler_view_source_news.adapter = adapter
             }
@@ -93,11 +99,11 @@ class NewsFragment : Fragment() {
                 //Buscar la nueva data
                 mService.sources.enqueue(object: retrofit2.Callback<Website>{
                     override fun onFailure(call: Call<Website>, t: Throwable) {
-                        Toast.makeText(activity!!.baseContext, "Failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(parentContext, "Failed", Toast.LENGTH_SHORT).show()
                     }
 
                     override fun onResponse(call: Call<Website>, response: Response<Website>) {
-                        adapter = ListSourceAdapter(activity!!.baseContext, response!!.body()!!)
+                        adapter = ListSourceAdapter(parentContext, response!!.body()!!)
                         adapter.notifyDataSetChanged()
                         recycler_view_source_news.adapter = adapter
 
@@ -115,11 +121,11 @@ class NewsFragment : Fragment() {
             //Buscar la nueva data
             mService.sources.enqueue(object: retrofit2.Callback<Website>{
                 override fun onFailure(call: Call<Website>, t: Throwable) {
-                    Toast.makeText(activity!!.baseContext, "Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(parentContext, "Failed", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(call: Call<Website>, response: Response<Website>) {
-                    adapter = ListSourceAdapter(activity!!.baseContext, response!!.body()!!)
+                    adapter = ListSourceAdapter(parentContext, response!!.body()!!)
                     adapter.notifyDataSetChanged()
                     recycler_view_source_news.adapter = adapter
 
