@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:textSize="18sp"
+                android:text="Coincidencia:"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/illness_coincidence_number"
+                android:text="0"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/circle_illness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/illness_name"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="@color/Black_Text"
+            android:text="ILLNESS NAME"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
