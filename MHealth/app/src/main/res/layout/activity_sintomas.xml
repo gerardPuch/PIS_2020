@@ -6,17 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".SintomasActivity">
 
-    <RelativeLayout
+    <ListView
+        android:id="@+id/found_sintomas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_illness"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"/>
-
-    </RelativeLayout>
+    </ListView>
 
     <TextView
         android:id="@+id/textView4"
