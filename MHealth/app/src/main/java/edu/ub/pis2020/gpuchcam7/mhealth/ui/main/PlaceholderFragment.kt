@@ -51,8 +51,7 @@ class PlaceholderFragment : Fragment() {
 
             when (sectionNumber){
                 1 -> fragment = SintomasFragment()
-                2 -> fragment = GuiaFragment()
-                3 -> fragment = NewsFragment()
+                2 -> fragment = NewsFragment()
             }
             return fragment
         }

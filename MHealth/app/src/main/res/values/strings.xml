@@ -2,8 +2,8 @@
     <string name="app_name">MHealth</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="tab_text_1">SINTOMES</string>
-    <string name="tab_text_2">PRIMERS AUXILIS</string>
-    <string name="tab_text_3">NOTÍCIES</string>
+    <string name="tab_text_3">PRIMERS AUXILIS</string>
+    <string name="tab_text_2">NOTÍCIES</string>
     <string name="Sintoma_1">Mareig</string>
     <string name="Sintoma_2">DOLOR</string>
     <string name="Sintoma_3">Febre</string>

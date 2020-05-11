@@ -31,6 +31,6 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 
     override fun getCount(): Int {
         // Show 3 total pages.
-        return 3
+        return 2
     }
 }
