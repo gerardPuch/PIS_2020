@@ -7,6 +7,14 @@ class Illness {
     private var sintomas: MutableList<String> = mutableListOf("empty")
     private var remedies: MutableList<String> = mutableListOf("empty")
 
+    constructor(name: String){
+        this.name = name
+        this.coincidence_value = 1
+        this.causes = mutableListOf("Casua 1")
+        this.sintomas = mutableListOf("Símptoma 1")
+        this.remedies = mutableListOf("Remei 1")
+    }
+
     fun setIllnessName(name: String){
         this.name = name
     }
