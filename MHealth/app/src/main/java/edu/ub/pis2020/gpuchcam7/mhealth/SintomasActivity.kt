@@ -14,7 +14,7 @@ class SintomasActivity : AppCompatActivity() {
 
     private lateinit var listView: ListView
     //https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
-    val db = FirebaseFirestore.getInstance()
+    //val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +35,28 @@ class SintomasActivity : AppCompatActivity() {
         illness_B.addIllnessSintoma("Símptoma 2")
         val illness_C :Illness = Illness("C")
 
-        val illness_db = hashMapOf(
+        /*val illness_db = hashMapOf(
+            "name" to "CoronaVirus",
+            "causes" to "alarmismo",
+            "sintomas" to "tos seca",
+            "remedies" to "encerrarse"
+        )*/
+
+        /*val illness_db = hashMapOf(
             "name" to illness_A.getIllnessName(),
             "causes" to illness_A.getIllnessCauses(),
             "sintomas" to illness_A.getIllnessSintomas(),
             "remedies" to illness_A.getIllnessRemedies()
-        )
+        )*/
 
-        db.collection("illness")
+        /*db.collection("illness")
             .add(illness_db)
             .addOnSuccessListener { documentReference ->
                 Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener {e ->
                 Log.w("TAG", "Error adding document", e)
-            }
+            }*/
 
         val all_Illness: MutableList<Illness> = mutableListOf(illness_A, illness_B, illness_C)
 
