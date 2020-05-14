@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "711261319264",
-    "firebase_url": "https://mhealth-de392.firebaseio.com",
-    "project_id": "mhealth-de392",
-    "storage_bucket": "mhealth-de392.appspot.com"
+    "project_number": "159949707549",
+    "firebase_url": "https://mhealth-a0d49.firebaseio.com",
+    "project_id": "mhealth-a0d49",
+    "storage_bucket": "mhealth-a0d49.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:711261319264:android:2ad3bcd66047dcac5bd305",
+        "mobilesdk_app_id": "1:159949707549:android:4643d4ebd7b503cb5229f4",
         "android_client_info": {
-          "package_name": "com.indeed.mHealth"
+          "package_name": "edu.ub.pis2020.gpuchcam7.mhealth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "711261319264-27s7ccfrc2mkkmk38aks4t2uu9hgi70q.apps.googleusercontent.com",
+          "client_id": "159949707549-kvr00gn4nai3583jvf3mko9ua9ep94sj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDFAX2qJY2jaUiS-M9UaKQLzrCqcgzKUJE"
+          "current_key": "AIzaSyBw1LxGK_BbwGLXIkxGOVVVGMh_Q7aiHHc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "711261319264-27s7ccfrc2mkkmk38aks4t2uu9hgi70q.apps.googleusercontent.com",
+              "client_id": "159949707549-kvr00gn4nai3583jvf3mko9ua9ep94sj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

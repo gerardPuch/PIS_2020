@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
 
@@ -14,7 +16,9 @@ class SintomasActivity : AppCompatActivity() {
 
     private lateinit var listView: ListView
     //https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
-    //val db = FirebaseFirestore.getInstance()
+    val db = FirebaseFirestore.getInstance()
+
+    val TAG = "SintomasActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,41 +30,11 @@ class SintomasActivity : AppCompatActivity() {
             listItems[i] = recipe.title
         }*/
 
-        //HARDCODED EJEMPLO
+        settingIllnessDB()
 
-        val illness_A :Illness = Illness("A")
-        illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 3")
-        val illness_B :Illness = Illness("B")
-        illness_B.addIllnessSintoma("Símptoma 2")
-        val illness_C :Illness = Illness("C")
+        //val all_Illness: MutableList<Illness> =
 
-        /*val illness_db = hashMapOf(
-            "name" to "CoronaVirus",
-            "causes" to "alarmismo",
-            "sintomas" to "tos seca",
-            "remedies" to "encerrarse"
-        )*/
-
-        /*val illness_db = hashMapOf(
-            "name" to illness_A.getIllnessName(),
-            "causes" to illness_A.getIllnessCauses(),
-            "sintomas" to illness_A.getIllnessSintomas(),
-            "remedies" to illness_A.getIllnessRemedies()
-        )*/
-
-        /*db.collection("illness")
-            .add(illness_db)
-            .addOnSuccessListener { documentReference ->
-                Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener {e ->
-                Log.w("TAG", "Error adding document", e)
-            }*/
-
-        val all_Illness: MutableList<Illness> = mutableListOf(illness_A, illness_B, illness_C)
-
-        val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
+        //val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
 
         // Asociar adapter
 
@@ -77,5 +51,41 @@ class SintomasActivity : AppCompatActivity() {
         }
 
         return illness
+    }
+
+    /*fun getIllnessDB(): MutableList<Illness>{
+
+    }*/
+
+    fun settingIllnessDB(){
+        //HARDCODED EJEMPLO
+
+        val illness_A :Illness = Illness("A")
+        illness_A.addIllnessSintoma("Símptoma 2")
+        illness_A.addIllnessSintoma("Símptoma 4")
+        val illness_B :Illness = Illness("B")
+        illness_B.addIllnessSintoma("Símptoma 2")
+        val illness_C :Illness = Illness("C")
+
+        db.collection("illness").document(illness_A.getIllnessName())
+            .set(illness_A)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot succesfully written!")
+            }
+            .addOnFailureListener {e ->
+                Log.w(TAG, "Error writting document", e)
+            }
+
+        /*db.collection("illness")
+            .add(illness_db)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener {e ->
+                Log.w(TAG, "Error adding document", e)
+            }*/
+
+        Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
+
     }
 }
