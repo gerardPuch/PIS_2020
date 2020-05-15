@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
+import kotlinx.android.synthetic.main.activity_sintomas.*
 
 class SintomasActivity : AppCompatActivity() {
 
@@ -30,9 +31,9 @@ class SintomasActivity : AppCompatActivity() {
             listItems[i] = recipe.title
         }*/
 
-        settingIllnessDB()
+        //settingIllnessDB()
 
-        //val all_Illness: MutableList<Illness> =
+        val all_Illness: MutableList<Illness> = getIllnessDB()
 
         //val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
 
@@ -49,32 +50,62 @@ class SintomasActivity : AppCompatActivity() {
         for (item in illness){
 
         }
-
         return illness
     }
 
-    /*fun getIllnessDB(): MutableList<Illness>{
+    fun getIllnessDB(): MutableList<Illness>{
+        var dbList =  mutableListOf<Illness>()
 
-    }*/
+        var coleccio = db.collection("illness")
+            .get()
+            .addOnSuccessListener { documents ->
+            for (document in documents) {
+                Log.d(TAG, "${document.id} => ${document.data}")
+            } }
+            .addOnFailureListener{ exception ->
+                Log.w(TAG, "Error getting documents", exception)
+            }
+
+        for (document in coleccio.result!!.documents){
+            var testMap = document.getData()
+            var instance = Illness(
+                testMap!!.get("illnessName") as String,
+                testMap!!.get("illnessCauses") as ArrayList<String>,
+                testMap!!.get("illnessSintomas") as MutableList<String>,
+                testMap!!.get("illnessRemedies") as MutableList<String>)
+            dbList.add(instance)
+        }
+        return dbList
+    }
 
     fun settingIllnessDB(){
         //HARDCODED EJEMPLO
 
         val illness_A :Illness = Illness("A")
         illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 4")
-        val illness_B :Illness = Illness("B")
-        illness_B.addIllnessSintoma("Símptoma 2")
-        val illness_C :Illness = Illness("C")
+        illness_A.addIllnessSintoma("Símptoma 2")
 
         db.collection("illness").document(illness_A.getIllnessName())
             .set(illness_A)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot succesfully written!")
-            }
-            .addOnFailureListener {e ->
-                Log.w(TAG, "Error writting document", e)
-            }
+            .addOnSuccessListener { documentReference -> Log.d(TAG, "DocumentSnapshot succesfully written!") }
+            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
+
+
+        val illness_B :Illness = Illness("B")
+        illness_B.addIllnessSintoma("Símptoma 2")
+
+        db.collection("illness").document(illness_B.getIllnessName())
+            .set(illness_B)
+            .addOnSuccessListener { documentReference -> Log.d(TAG, "DocumentSnapshot succesfully written!") }
+            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
+
+
+        val illness_C :Illness = Illness("C")
+
+        db.collection("illness").document(illness_C.getIllnessName())
+            .set(illness_C)
+            .addOnSuccessListener { documentReference ->Log.d(TAG, "DocumentSnapshot succesfully written!") }
+            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
 
         /*db.collection("illness")
             .add(illness_db)
