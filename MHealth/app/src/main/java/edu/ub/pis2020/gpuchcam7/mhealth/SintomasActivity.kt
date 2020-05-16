@@ -33,7 +33,7 @@ class SintomasActivity : AppCompatActivity() {
 
         //settingIllnessDB()
 
-        val all_Illness: MutableList<Illness> = getIllnessDB()
+        val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
 
         //val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
 
@@ -54,36 +54,60 @@ class SintomasActivity : AppCompatActivity() {
     }
 
     fun getIllnessDB(): MutableList<Illness>{
-        var dbList =  mutableListOf<Illness>()
+        val dbList =  mutableListOf<Illness>()
+        val cities = ArrayList<Illness>()
+
 
         var coleccio = db.collection("illness")
             .get()
             .addOnSuccessListener { documents ->
             for (document in documents) {
                 Log.d(TAG, "${document.id} => ${document.data}")
+
             } }
             .addOnFailureListener{ exception ->
                 Log.w(TAG, "Error getting documents", exception)
             }
 
-        for (document in coleccio.result!!.documents){
-            var testMap = document.getData()
+        val query = db.collection("illness")
+        val registration = query.addSnapshotListener { snapshots, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+            for (doc in snapshots!!) {
+                var instance = Illness(
+                    doc.getData().get("illnessName") as String,
+                    doc.getData().get("illnessCauses") as ArrayList<String>,
+                    doc.getData().get("illnessSintomas") as MutableList<String>,
+                    doc.getData().get("illnessRemedies") as MutableList<String>)
+                dbList.add(instance)
+                cities.add(instance)
+            }
+
+            Log.d(TAG, "Current cites in CA: $cities")
+        }
+
+        registration.remove()
+
+            /*var testMap = it.getData()
             var instance = Illness(
                 testMap!!.get("illnessName") as String,
                 testMap!!.get("illnessCauses") as ArrayList<String>,
                 testMap!!.get("illnessSintomas") as MutableList<String>,
                 testMap!!.get("illnessRemedies") as MutableList<String>)
-            dbList.add(instance)
-        }
+            dbList.add(instance)*/
         return dbList
     }
 
     fun settingIllnessDB(){
         //HARDCODED EJEMPLO
+        var illnessList = arrayListOf<Illness>()
 
         val illness_A :Illness = Illness("A")
         illness_A.addIllnessSintoma("Símptoma 2")
         illness_A.addIllnessSintoma("Símptoma 2")
+        illnessList.add(illness_A)
 
         db.collection("illness").document(illness_A.getIllnessName())
             .set(illness_A)
@@ -93,6 +117,7 @@ class SintomasActivity : AppCompatActivity() {
 
         val illness_B :Illness = Illness("B")
         illness_B.addIllnessSintoma("Símptoma 2")
+        illnessList.add(illness_B)
 
         db.collection("illness").document(illness_B.getIllnessName())
             .set(illness_B)
@@ -101,6 +126,7 @@ class SintomasActivity : AppCompatActivity() {
 
 
         val illness_C :Illness = Illness("C")
+        illnessList.add(illness_C)
 
         db.collection("illness").document(illness_C.getIllnessName())
             .set(illness_C)
@@ -117,6 +143,24 @@ class SintomasActivity : AppCompatActivity() {
             }*/
 
         Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
+    }
 
+    fun getHARDCODEDIllnessDB(): ArrayList<Illness> {
+        //HARDCODED EJEMPLO
+        var illnessList = arrayListOf<Illness>()
+
+        val illness_A :Illness = Illness("A")
+        illness_A.addIllnessSintoma("Símptoma 2")
+        illness_A.addIllnessSintoma("Símptoma 2")
+        illnessList.add(illness_A)
+
+        val illness_B :Illness = Illness("B")
+        illness_B.addIllnessSintoma("Símptoma 2")
+        illnessList.add(illness_B)
+
+        val illness_C :Illness = Illness("C")
+        illnessList.add(illness_C)
+
+        return illnessList
     }
 }
