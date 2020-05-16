@@ -35,7 +35,7 @@ class SintomasActivity : AppCompatActivity() {
 
         val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
 
-        //val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
+        val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
 
         // Asociar adapter
 
@@ -44,11 +44,23 @@ class SintomasActivity : AppCompatActivity() {
     }
 
     fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: MutableList<String>): MutableList<Illness>{
-        var list: MutableList<Illness> = mutableListOf()
-
-        //Busqueda Lineal
+        var resultList: MutableList<Illness> = mutableListOf()
+        var founded = false
+        var counter = 0
+        //Busqueda Secuencial O(n)
         for (item in illness){
+            counter = 0
+            founded = false
 
+            for (it in sintomas){
+                if(item.getIllnessSintomas().contains(it)){
+                    counter++
+                    if (counter > 1) {founded = true}
+                }
+            }
+            if(founded == true){
+                resultList.add(item)
+            }
         }
         return illness
     }
