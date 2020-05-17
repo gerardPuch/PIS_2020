@@ -21,21 +21,20 @@ class SintomasActivity : AppCompatActivity() {
 
     val TAG = "SintomasActivity"
 
+    lateinit var selectedSintomas: ArrayList<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sintomas)
 
-        // Crear lista de enfermedades i cargarlas
-        /*for (i in 0 until recipeList.size) {
-            val recipe = recipeList[i]
-            listItems[i] = recipe.title
-        }*/
+        var selectedSintomas = intent.getStringArrayListExtra("selecteds")
+        //var selectedSintomas = arrayListOf<String>("Sintoma 1")
 
         //settingIllnessDB()
 
         val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
 
-        val listItems = searchIllnessCoincidence(all_Illness, mutableListOf("Símptoma 1", "Símptoma 2", "Símptoma 3"))
+        val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
 
         // Asociar adapter
 
@@ -43,26 +42,24 @@ class SintomasActivity : AppCompatActivity() {
         //listView.adapter = adapter
     }
 
-    fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: MutableList<String>): MutableList<Illness>{
+    fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: ArrayList<String>): MutableList<Illness>{
         var resultList: MutableList<Illness> = mutableListOf()
-        var founded = false
         var counter = 0
         //Busqueda Secuencial O(n)
         for (item in illness){
             counter = 0
-            founded = false
 
             for (it in sintomas){
                 if(item.getIllnessSintomas().contains(it)){
                     counter++
-                    if (counter > 1) {founded = true}
                 }
             }
-            if(founded == true){
+            if(counter > 1){
+                item.setIllnessCoincidenceValue(counter)
                 resultList.add(item)
             }
         }
-        return illness
+        return resultList
     }
 
     fun getIllnessDB(): MutableList<Illness>{
@@ -118,7 +115,7 @@ class SintomasActivity : AppCompatActivity() {
 
         val illness_A :Illness = Illness("A")
         illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 2")
+        illness_A.addIllnessSintoma("Símptoma 3")
         illnessList.add(illness_A)
 
         db.collection("illness").document(illness_A.getIllnessName())
@@ -163,7 +160,7 @@ class SintomasActivity : AppCompatActivity() {
 
         val illness_A :Illness = Illness("A")
         illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 2")
+        illness_A.addIllnessSintoma("Símptoma 3")
         illnessList.add(illness_A)
 
         val illness_B :Illness = Illness("B")

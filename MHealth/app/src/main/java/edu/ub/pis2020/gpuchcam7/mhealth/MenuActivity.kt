@@ -36,9 +36,4 @@ class MenuActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }*/
     }
-
-    fun Next(view: View) {
-        val intent = Intent(this, SintomasActivity::class.java)
-        startActivity(intent)
-    }
 }

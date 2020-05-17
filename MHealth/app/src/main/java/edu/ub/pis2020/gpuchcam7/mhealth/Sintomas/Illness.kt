@@ -9,14 +9,14 @@ class Illness {
 
     constructor(name: String){
         this.name = name
-        this.coincidence_value = 1
+        this.coincidence_value = 0
         this.causes = mutableListOf("Casua 1")
         this.sintomas = mutableListOf("Símptoma 1")
         this.remedies = mutableListOf("Remei 1")
     }
     constructor(name: String, causes: MutableList<String>, sintomas: MutableList<String>, remedies: MutableList<String>){
         this.name = name
-        this.coincidence_value = 1
+        this.coincidence_value = 0
         this.causes = causes
         this.sintomas = sintomas
         this.remedies = remedies

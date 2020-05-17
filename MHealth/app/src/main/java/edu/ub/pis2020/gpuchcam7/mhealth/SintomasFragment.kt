@@ -7,14 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import android.widget.Toast
+import androidx.core.view.get
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterSpinner
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.SpinnerItem
 import kotlinx.android.synthetic.main.fragment_sintomas.*
+import kotlinx.android.synthetic.main.fragment_sintomas.view.*
+import kotlinx.android.synthetic.main.spinner_item.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -67,7 +71,13 @@ class SintomasFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sintomas, container, false)
+        val view = inflater.inflate(R.layout.fragment_sintomas, container, false)
+
+        view.btnNext.setOnClickListener { view ->
+            openActivity()
+        }
+
+        return view
     }
 
     companion object {
@@ -80,9 +90,33 @@ class SintomasFragment : Fragment() {
             SintomasFragment().apply {}
     }
 
-    fun Next(view: View) {
+    fun openActivity() {
+        //var selected = substractSintomasChecked()
+        var selected = arrayListOf<String>("Símptoma 1", "Símptoma 2", "Símptoma 3")
         val intent = Intent(activity, SintomasActivity::class.java)
+        intent.putStringArrayListExtra("selecteds", selected)
         startActivity(intent)
+    }
+
+    fun substractSintomasChecked(): ArrayList<String>{
+        var result = arrayListOf<String>()
+        var spinners = mutableListOf<Spinner>(S1, S2, S3, S4)
+
+        var checkBoxes = mutableListOf<CheckBox>(Sintoma1, Sintoma2, Sintoma3, Sintoma4, Sintoma5, Sintoma6, Sintoma7, Sintoma8, Sintoma9, Sintoma10)
+
+        for (it in spinners){
+            for (i in 0..it.adapter.count){
+                checkBoxes.add(it.get(i).checkbox)
+            }
+        }
+
+        for (it in checkBoxes){
+            if(it.isChecked){
+                result.add(it.text.toString())
+            }
+        }
+
+        return result
     }
 
     fun setSintomasNames(){
