@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.ub.pis2020.gpuchcam7.mhealth.IllnessActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.R
 import kotlinx.android.synthetic.main.illness_item.view.*
+import java.util.ArrayList
 
 class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illness>): ArrayAdapter<Illness>(context, resource, objects) {
     lateinit var mContext: Context
@@ -65,7 +66,12 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
 
         holder.itemView.setOnClickListener({
             val intent = Intent(mContext, IllnessActivity::class.java)
-            //intent.putExtra("source", webSite.sources!![position].id)
+            val causes = listItems.get(position).getIllnessCauses() as ArrayList<String>
+            val sintomas = listItems.get(position).getIllnessSintomas() as ArrayList<String>
+            val remedies = listItems.get(position).getIllnessRemedies() as ArrayList<String>
+            intent.putStringArrayListExtra("causes", causes)
+            intent.putStringArrayListExtra("sintomas", sintomas)
+            intent.putStringArrayListExtra("remedies", remedies)
             mContext.startActivity(intent)
         })
 
