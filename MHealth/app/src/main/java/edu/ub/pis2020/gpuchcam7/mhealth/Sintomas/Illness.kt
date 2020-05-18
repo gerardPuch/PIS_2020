@@ -3,6 +3,7 @@ package edu.ub.pis2020.gpuchcam7.mhealth.Sintomas
 class Illness {
     private var name: String = "name"
     private var coincidence_value: Int = 0
+    private var coincidence_color: Int = 0
     private var causes: MutableList<String> = mutableListOf("empty")
     private var sintomas: MutableList<String> = mutableListOf("empty")
     private var remedies: MutableList<String> = mutableListOf("empty")
@@ -10,6 +11,7 @@ class Illness {
     constructor(name: String){
         this.name = name
         this.coincidence_value = 0
+        this.coincidence_color = 0
         this.causes = mutableListOf("Casua 1")
         this.sintomas = mutableListOf("Símptoma 1")
         this.remedies = mutableListOf("Remei 1")
@@ -17,6 +19,7 @@ class Illness {
     constructor(name: String, causes: MutableList<String>, sintomas: MutableList<String>, remedies: MutableList<String>){
         this.name = name
         this.coincidence_value = 0
+        this.coincidence_color = 0
         this.causes = causes
         this.sintomas = sintomas
         this.remedies = remedies
@@ -36,6 +39,14 @@ class Illness {
 
     fun getIllnessCoincidenceValue(): Int{
         return coincidence_value
+    }
+
+    fun setIllnessCoincidenceColor(number: Int){
+        coincidence_color = number
+    }
+
+    fun getIllnessCoincidenceColor(): Int{
+        return coincidence_color
     }
 
     fun addIllnessCause(new: String){

@@ -7,18 +7,20 @@ import android.util.Log
 import android.view.View
 import android.widget.ListView
 import android.widget.Toast
+import androidx.core.view.get
+import androidx.core.view.size
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.FirebaseFirestore
+import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterIllness
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
 import kotlinx.android.synthetic.main.activity_sintomas.*
 
 class SintomasActivity : AppCompatActivity() {
 
-    private lateinit var listView: ListView
+    lateinit var listView: ListView
     //https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
     val db = FirebaseFirestore.getInstance()
-
     val TAG = "SintomasActivity"
 
     lateinit var selectedSintomas: ArrayList<String>
@@ -27,19 +29,35 @@ class SintomasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sintomas)
 
+        listView = findViewById(R.id.found_sintomas)
+
         var selectedSintomas = intent.getStringArrayListExtra("selecteds")
-        //var selectedSintomas = arrayListOf<String>("Sintoma 1")
-
         //settingIllnessDB()
-
         val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
-
         val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
+        //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
+        correctResult(listItems)
 
-        // Asociar adapter
+        //Asociar adapter
 
-        //val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
-        //listView.adapter = adapter
+        val adapter = AdapterIllness(this, 0, listItems)
+        listView.adapter = adapter
+    }
+
+    fun correctResult(list: MutableList<Illness>) {
+        var listSize = list.size
+        var maxValue = 0
+        list.forEach {
+            if (it.getIllnessCoincidenceValue() > maxValue){
+                maxValue = it.getIllnessCoincidenceValue()
+            }
+        }
+
+        var colorValue = 0
+        list.forEach {
+            colorValue = (it.getIllnessCoincidenceValue()*100)/maxValue
+            it.setIllnessCoincidenceColor(colorValue)
+        }
     }
 
     fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: ArrayList<String>): MutableList<Illness>{
