@@ -15,6 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterIllness
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
 import kotlinx.android.synthetic.main.activity_sintomas.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.tasks.await
 
 class SintomasActivity : AppCompatActivity() {
 
@@ -34,7 +36,10 @@ class SintomasActivity : AppCompatActivity() {
         var selectedSintomas = intent.getStringArrayListExtra("selecteds")
         //settingIllnessDB()
         val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
+        //val all_Illness: MutableList<Illness> = getIllnessDB()
+
         val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
+
         //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
         correctResult(listItems)
 
@@ -82,21 +87,33 @@ class SintomasActivity : AppCompatActivity() {
 
     fun getIllnessDB(): MutableList<Illness>{
         val dbList =  mutableListOf<Illness>()
-        val cities = ArrayList<Illness>()
-
+        val names = arrayListOf<String>()
+        val causes = arrayListOf<ArrayList<String>>()
+        val sintomas = arrayListOf<ArrayList<String>>()
+        val remedies = arrayListOf<ArrayList<String>>()
 
         var coleccio = db.collection("illness")
             .get()
             .addOnSuccessListener { documents ->
-            for (document in documents) {
-                Log.d(TAG, "${document.id} => ${document.data}")
-
-            } }
+                for (document in documents) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                    /*names.add(document.data["illnessName"].toString())
+                    causes.add(document.data["illnessCauses"] as ArrayList<String>)
+                    sintomas.add(document.data["illnessSintomas"] as ArrayList<String>)
+                    remedies.add(document.data["illnessRemedies"] as ArrayList<String>)*/
+                    var instance = Illness(
+                        document.data["illnessName"] as String,
+                        document.data["illnessCauses"] as ArrayList<String>,
+                        document.data["illnessSintomas"] as MutableList<String>,
+                        document.data["illnessRemedies"] as MutableList<String>)
+                    dbList.add(instance)
+                }
+            }
             .addOnFailureListener{ exception ->
                 Log.w(TAG, "Error getting documents", exception)
             }
 
-        val query = db.collection("illness")
+        /*val query = db.collection("illness")
         val registration = query.addSnapshotListener { snapshots, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
@@ -109,13 +126,10 @@ class SintomasActivity : AppCompatActivity() {
                     doc.getData().get("illnessSintomas") as MutableList<String>,
                     doc.getData().get("illnessRemedies") as MutableList<String>)
                 dbList.add(instance)
-                cities.add(instance)
             }
+        }*/
 
-            Log.d(TAG, "Current cites in CA: $cities")
-        }
-
-        registration.remove()
+        /*registration.remove()*/
 
             /*var testMap = it.getData()
             var instance = Illness(

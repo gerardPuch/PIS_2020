@@ -1,6 +1,7 @@
 package edu.ub.pis2020.gpuchcam7.mhealth.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import edu.ub.pis2020.gpuchcam7.mhealth.Adapter.ViewHolder.ListNewsViewHolder
 import edu.ub.pis2020.gpuchcam7.mhealth.Common.ISO8601Parser
 import edu.ub.pis2020.gpuchcam7.mhealth.Interface.ItemClickListener
 import edu.ub.pis2020.gpuchcam7.mhealth.Model.Articles
+import edu.ub.pis2020.gpuchcam7.mhealth.NewDetailActivity
+import edu.ub.pis2020.gpuchcam7.mhealth.NewsActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.R
 import java.text.ParseException
 import java.util.*
@@ -51,10 +54,18 @@ class ListNewsAdapter(val articleList:MutableList<Articles>, private val context
         }
 
         //Set Event Click
-        holder.setItemClickListener(object :ItemClickListener{
+        holder.itemView.setOnClickListener {
+            val detail = Intent(context, NewDetailActivity::class.java)
+            detail.putExtra("webURL", articleList[position].url)
+            context.startActivity(detail)
+        }
+
+        /*holder.setItemClickListener(object :ItemClickListener{
             override fun onClick(view: View, position: Int) {
-                //Per implementar
+                val detail = Intent(context, NewDetailActivity::class.java)
+                detail.putExtra("webURL", articleList[position].url)
+                context.startActivity(detail)
             }
-        })
+        })*/
     }
 }

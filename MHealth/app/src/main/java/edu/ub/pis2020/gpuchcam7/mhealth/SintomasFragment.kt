@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterSpinner
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.SpinnerItem
+import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.ViewHolder
 import kotlinx.android.synthetic.main.fragment_sintomas.*
 import kotlinx.android.synthetic.main.fragment_sintomas.view.*
 import kotlinx.android.synthetic.main.spinner_item.view.*
@@ -91,8 +92,8 @@ class SintomasFragment : Fragment() {
     }
 
     fun openActivity() {
-        //var selected = substractSintomasChecked()
-        var selected = arrayListOf<String>("Símptoma 1", "Símptoma 2", "Símptoma 3")
+        var selected = substractSintomasChecked()
+        //var selected = arrayListOf<String>("Símptoma 1", "Símptoma 2", "Símptoma 3")
         val intent = Intent(activity, SintomasActivity::class.java)
         intent.putStringArrayListExtra("selecteds", selected)
         startActivity(intent)
@@ -102,11 +103,14 @@ class SintomasFragment : Fragment() {
         var result = arrayListOf<String>()
         var spinners = mutableListOf<Spinner>(S1, S2, S3, S4)
 
-        var checkBoxes = mutableListOf<CheckBox>(Sintoma1, Sintoma2, Sintoma3, Sintoma4, Sintoma5, Sintoma6, Sintoma7, Sintoma8, Sintoma9, Sintoma10)
+        var checkBoxes = mutableListOf<CheckBox>(
+            Sintoma1, Sintoma2, Sintoma3, Sintoma4, Sintoma5,
+            Sintoma6, Sintoma7, Sintoma8, Sintoma9, Sintoma10)
 
         for (it in spinners){
-            for (i in 0..it.adapter.count){
-                checkBoxes.add(it.get(i).checkbox)
+            for (i in 0..it.childCount-1){
+                var aux = it.get(i).tag as ViewHolder
+                checkBoxes.add(aux.mCheckBox)
             }
         }
 

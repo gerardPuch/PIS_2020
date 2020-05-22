@@ -1,6 +1,7 @@
 package edu.ub.pis2020.gpuchcam7.mhealth
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Adapter
@@ -25,6 +26,7 @@ class NewsActivity : AppCompatActivity() {
     lateinit var dialog: AlertDialog
     lateinit var mService: NewsService
     lateinit var adapter: ListNewsAdapter
+    lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,9 @@ class NewsActivity : AppCompatActivity() {
         }
 
         diagonalLayout.setOnClickListener{
-            //Per implementar
+            val detail = Intent(baseContext, NewDetailActivity::class.java)
+            detail.putExtra("webURL", webHotUrl)
+            startActivity(detail)
         }
 
         list_news.setHasFixedSize(true)
