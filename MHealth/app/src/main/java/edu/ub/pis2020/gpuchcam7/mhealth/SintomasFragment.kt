@@ -11,7 +11,9 @@ import android.widget.CheckBox
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import android.widget.Toast
+import androidx.core.view.children
 import androidx.core.view.get
+import androidx.core.view.size
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterSpinner
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
@@ -108,9 +110,12 @@ class SintomasFragment : Fragment() {
             Sintoma6, Sintoma7, Sintoma8, Sintoma9, Sintoma10)
 
         for (it in spinners){
-            for (i in 0..it.childCount-1){
-                var aux = it.get(i).tag as ViewHolder
-                checkBoxes.add(aux.mCheckBox)
+            for (i in 0..it.adapter.count-1){ // numero de SpinnerItems
+                var aux = it.adapter.getItem(i) as SpinnerItem
+                var check = CheckBox(context)
+                check.text = aux.getTextItem()
+                check.isChecked = aux.isSelected()
+                checkBoxes.add(check)
             }
         }
 
