@@ -128,6 +128,8 @@ class NewsActivity : AppCompatActivity() {
 
                 })
         }
+    }
+    fun clickOnArticle(intent: Intent){
 
     }
 }

@@ -57,6 +57,7 @@ class ListNewsAdapter(val articleList:MutableList<Articles>, private val context
         holder.itemView.setOnClickListener {
             val detail = Intent(context, NewDetailActivity::class.java)
             detail.putExtra("webURL", articleList[position].url)
+            detail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
             context.startActivity(detail)
         }
 
