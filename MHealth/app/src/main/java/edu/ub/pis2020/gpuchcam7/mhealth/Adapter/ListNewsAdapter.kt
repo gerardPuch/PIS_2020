@@ -12,7 +12,6 @@ import edu.ub.pis2020.gpuchcam7.mhealth.Common.ISO8601Parser
 import edu.ub.pis2020.gpuchcam7.mhealth.Interface.ItemClickListener
 import edu.ub.pis2020.gpuchcam7.mhealth.Model.Articles
 import edu.ub.pis2020.gpuchcam7.mhealth.NewDetailActivity
-import edu.ub.pis2020.gpuchcam7.mhealth.NewsActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.R
 import java.text.ParseException
 import java.util.*
@@ -33,7 +32,6 @@ class ListNewsAdapter(val articleList:MutableList<Articles>, private val context
         Picasso.with(context)
             .load(articleList[position].urlToImage)
             .into(holder.article_image)
-
 
         if(articleList[position].title!!.length > 65){
             holder.article_title.text = articleList[position].title!!.substring(0,65)+"..."
@@ -60,13 +58,5 @@ class ListNewsAdapter(val articleList:MutableList<Articles>, private val context
             detail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
             context.startActivity(detail)
         }
-
-        /*holder.setItemClickListener(object :ItemClickListener{
-            override fun onClick(view: View, position: Int) {
-                val detail = Intent(context, NewDetailActivity::class.java)
-                detail.putExtra("webURL", articleList[position].url)
-                context.startActivity(detail)
-            }
-        })*/
     }
 }

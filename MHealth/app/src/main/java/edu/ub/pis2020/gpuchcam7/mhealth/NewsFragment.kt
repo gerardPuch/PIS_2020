@@ -7,19 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import dmax.dialog.SpotsDialog
-import edu.ub.pis2020.gpuchcam7.mhealth.Adapter.ListSourceAdapter
+import edu.ub.pis2020.gpuchcam7.mhealth.Adapter.ListNewsAdapter
 import edu.ub.pis2020.gpuchcam7.mhealth.Common.Common
 import edu.ub.pis2020.gpuchcam7.mhealth.Interface.NewsService
-import edu.ub.pis2020.gpuchcam7.mhealth.Model.Website
-import io.paperdb.Paper
+import edu.ub.pis2020.gpuchcam7.mhealth.Model.News
 import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.fragment_news.swipe_to_refresh
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 /**
  * A simple [Fragment] subclass.
@@ -28,10 +26,12 @@ import javax.security.auth.callback.Callback
  */
 class NewsFragment : Fragment() {
 
-    lateinit var layoutManager: LinearLayoutManager
-    lateinit var mService: NewsService
-    lateinit var adapter: ListSourceAdapter
+    var webHotUrl: String? = ""
+
     lateinit var dialog: AlertDialog
+    lateinit var mService: NewsService
+    lateinit var adapter: ListNewsAdapter
+    lateinit var layoutManager: LinearLayoutManager
 
     lateinit var parentContext: Context
 
@@ -43,29 +43,30 @@ class NewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //Init cache DB
-        Paper.init(parentContext)
-
-        //Init Servicio
+        //Init View
         mService = Common.newsService
+
+        dialog = SpotsDialog(parentContext)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Init View
-        swipe_to_refresh.setOnRefreshListener{
-            loadWebSiteSource(true)
+        swipe_to_refresh.setOnRefreshListener {
+            loadNews(true)
         }
 
-        recycler_view_source_news.setHasFixedSize(true)
-        layoutManager = LinearLayoutManager(parentContext)
-        recycler_view_source_news.layoutManager = layoutManager
+        diagonalLayout.setOnClickListener{
+            /*val detail = Intent(baseContext, NewDetailActivity::class.java)
+            detail.putExtra("webURL", webHotUrl)
+            detail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
+            startActivity(detail)*/
+        }
 
-        dialog = SpotsDialog(parentContext)
+        list_news.setHasFixedSize(true)
+        list_news.layoutManager = LinearLayoutManager(parentContext)
 
-        loadWebSiteSource(false)
+        loadNews(false)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -83,58 +84,79 @@ class NewsFragment : Fragment() {
             NewsFragment().apply {}
     }
 
-    private fun loadWebSiteSource (isRefresh: Boolean) {
-        if(!isRefresh){
-            val cache = Paper.book().read<String>("cache")
-            if(cache != null && !cache.isBlank() && cache != "null"){
-                //Leer Cache
-                val webSite = Gson().fromJson<Website>(cache, Website::class.java)
-                adapter = ListSourceAdapter(parentContext, webSite)
-                adapter.notifyDataSetChanged()
-                recycler_view_source_news.adapter = adapter
-            }
-            else{
-                //Cargar web y escribir en cache
-                dialog.show()
-                //Buscar la nueva data
-                mService.sources.enqueue(object: retrofit2.Callback<Website>{
-                    override fun onFailure(call: Call<Website>, t: Throwable) {
-                        Toast.makeText(parentContext, "Failed", Toast.LENGTH_SHORT).show()
+    private fun loadNews(isRefreshed: Boolean) {
+        if(isRefreshed){
+            dialog.show()
+            mService.getNewsFromSource("https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be")
+                .enqueue(object : retrofit2.Callback<News> {
+                    override fun onFailure(call: Call<News>, t: Throwable) {
+                        TODO("Not yet implemented")
                     }
 
-                    override fun onResponse(call: Call<Website>, response: Response<Website>) {
-                        adapter = ListSourceAdapter(parentContext, response!!.body()!!)
-                        adapter.notifyDataSetChanged()
-                        recycler_view_source_news.adapter = adapter
-
-                        //Guardar en cahce
-                        Paper.book().write("cache", Gson().toJson(response!!.body()!!))
-
+                    override fun onResponse(call: Call<News>, response: Response<News>) {
                         dialog.dismiss()
+
+                        //Obtener primer articulo de las hot news
+                        Picasso.with(parentContext)
+                            .load(response!!.body()!!.articles!![0].urlToImage)
+                            .into(top_image)
+
+                        top_title.text = response!!.body()!!.articles!![0].title
+                        top_author.text = response!!.body()!!.articles!![0].author
+
+                        webHotUrl = response!!.body()!!.articles!![0].url
+
+                        //Cargar el resto de articulos
+                        val removeFirstItem = response!!.body()!!.articles
+
+                        //Como hemos obtenido el primer objeto de las hot news, tenemos que eliminarlo
+                        removeFirstItem!!.removeAt(0)
+
+                        adapter = ListNewsAdapter(removeFirstItem!!, parentContext)
+                        adapter.notifyDataSetChanged()
+                        list_news.adapter = adapter
+
                     }
+
                 })
-            }
         }
         else{
             swipe_to_refresh.isRefreshing = true
+            mService.getNewsFromSource("https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be")
+                .enqueue(object : retrofit2.Callback<News> {
+                    override fun onFailure(call: Call<News>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
 
-            //Buscar la nueva data
-            mService.sources.enqueue(object: retrofit2.Callback<Website>{
-                override fun onFailure(call: Call<Website>, t: Throwable) {
-                    Toast.makeText(parentContext, "Failed", Toast.LENGTH_SHORT).show()
-                }
+                    override fun onResponse(call: Call<News>, response: Response<News>) {
+                        swipe_to_refresh.isRefreshing = false
 
-                override fun onResponse(call: Call<Website>, response: Response<Website>) {
-                    adapter = ListSourceAdapter(parentContext, response!!.body()!!)
-                    adapter.notifyDataSetChanged()
-                    recycler_view_source_news.adapter = adapter
+                        //Obtener primer articulo de las hot news
 
-                    //Guardar en cahce
-                    Paper.book().write("cache", Gson().toJson(response!!.body()!!))
+                        if(response!!.body()!!.articles!![0].urlToImage == null){
+                            response!!.body()!!.articles!![0].urlToImage = "https://www.eventoplus.com/content/thumbs/960_540/content/imgsxml/galerias/noticias/6883/big-comunicado-oms-urgencias652.jpg"
+                        }
 
-                    swipe_to_refresh.isRefreshing = false
-                }
-            })
+                        Picasso.with(parentContext)
+                            .load(response!!.body()!!.articles!![0].urlToImage)
+                            .into(top_image)
+
+                        top_title.text = response!!.body()!!.articles!![0].title
+                        top_author.text = response!!.body()!!.articles!![0].author
+
+                        webHotUrl = response!!.body()!!.articles!![0].url
+
+                        //Cargar el resto de articulos
+                        val removeFirstItem = response!!.body()!!.articles
+
+                        //Como hemos obtenido el primer objeto de las hot news, tenemos que eliminarlo
+                        removeFirstItem!!.removeAt(0)
+
+                        adapter = ListNewsAdapter(removeFirstItem!!, parentContext)
+                        adapter.notifyDataSetChanged()
+                        list_news.adapter = adapter
+                    }
+                })
         }
     }
 }
