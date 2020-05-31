@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:onClick="Next"
         android:text="NEXT" />
 
     <LinearLayout
@@ -18,11 +17,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <SearchView
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </SearchView>
+            android:layout_height="20dp"/>
 
         <FrameLayout
             android:layout_width="match_parent"

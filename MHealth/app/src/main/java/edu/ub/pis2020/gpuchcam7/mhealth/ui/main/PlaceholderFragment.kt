@@ -4,13 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import edu.ub.pis2020.gpuchcam7.mhealth.GuiaFragment
 import edu.ub.pis2020.gpuchcam7.mhealth.NewsFragment
 import edu.ub.pis2020.gpuchcam7.mhealth.R
 import edu.ub.pis2020.gpuchcam7.mhealth.SintomasFragment
