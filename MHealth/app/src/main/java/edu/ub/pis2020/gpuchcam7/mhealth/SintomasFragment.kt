@@ -60,7 +60,7 @@ class SintomasFragment : Fragment() {
         S4 = Spinner4
 
         //Establece los sintomas en los elementos de la lista
-        setSintomasNames()
+        setSintomas()
 
         var S1Adapter: AdapterSpinner = AdapterSpinner(activity!!, 0, ListS1)
         S1.adapter = S1Adapter
@@ -97,12 +97,12 @@ class SintomasFragment : Fragment() {
         var selected = substractSintomasChecked()
         //var selected = arrayListOf<String>("Símptoma 1", "Símptoma 2", "Símptoma 3")
         val intent = Intent(activity, SintomasActivity::class.java)
-        intent.putStringArrayListExtra("selecteds", selected)
+        intent.putIntegerArrayListExtra("selecteds", selected)
         startActivity(intent)
     }
 
-    fun substractSintomasChecked(): ArrayList<String>{
-        var result = arrayListOf<String>()
+    fun substractSintomasChecked(): ArrayList<Int>{
+        var result = arrayListOf<Int>()
         var spinners = mutableListOf<Spinner>(S1, S2, S3, S4)
 
         var checkBoxes = mutableListOf<CheckBox>(
@@ -110,6 +110,23 @@ class SintomasFragment : Fragment() {
             Sintoma6, Sintoma7, Sintoma8, Sintoma9, Sintoma10)
 
         for (it in spinners){
+            var spinnerRoot = it.adapter.getItem(0) as SpinnerItem
+            var spinnerName = spinnerRoot.getTextItem()
+            for (i in 0..it.adapter.count-1){ // numero de SpinnerItems
+                var aux = it.adapter.getItem(i) as SpinnerItem
+                if(aux.isSelected()){
+                    result.add(ListSintomas.getSintomaID(ListSintomas.getCodeSintoma(aux.text, spinnerName)))
+                }
+            }
+        }
+
+        for (it in checkBoxes){
+            if(it.isChecked){
+                result.add(ListSintomas.getSintomaID(it.text.toString()))
+            }
+        }
+
+        /*for (it in spinners){
             for (i in 0..it.adapter.count-1){ // numero de SpinnerItems
                 var aux = it.adapter.getItem(i) as SpinnerItem
                 var check = CheckBox(context)
@@ -123,12 +140,12 @@ class SintomasFragment : Fragment() {
             if(it.isChecked){
                 result.add(it.text.toString())
             }
-        }
+        }*/
 
         return result
     }
 
-    fun setSintomasNames(){
+    fun setSintomas(){
         //Alucinacions
         Sintoma1.setText(ListSintomas.getSintoma(0))
 
@@ -137,10 +154,10 @@ class SintomasFragment : Fragment() {
             S1Title.initializeItem(ListSintomas.getSintoma(1))
             //Bardicardia
             var item1: SpinnerItem = SpinnerItem()
-            item1.initializeItem(ListSintomas.getSintoma(2))
+            item1.initializeItem(ListSintomas.getNameSintoma(2))
             //Taquicardia
             var item2: SpinnerItem = SpinnerItem()
-            item2.initializeItem(ListSintomas.getSintoma(3))
+            item2.initializeItem(ListSintomas.getNameSintoma(3))
 
             ListS1 = mutableListOf(S1Title, item1, item2)
         //Diarrea
@@ -152,34 +169,34 @@ class SintomasFragment : Fragment() {
             S2Title.initializeItem(ListSintomas.getSintoma(6))
             //Abdomen
             var item3: SpinnerItem = SpinnerItem()
-            item3.initializeItem(ListSintomas.getSintoma(7))
+            item3.initializeItem(ListSintomas.getNameSintoma(7))
             //Cap
             var item4: SpinnerItem = SpinnerItem()
-            item4.initializeItem(ListSintomas.getSintoma(8))
+            item4.initializeItem(ListSintomas.getNameSintoma(8))
             //Coll
             var item5: SpinnerItem = SpinnerItem()
-            item5.initializeItem(ListSintomas.getSintoma(9))
+            item5.initializeItem(ListSintomas.getNameSintoma(9))
             //Dents
             var item6: SpinnerItem = SpinnerItem()
-            item6.initializeItem(ListSintomas.getSintoma(10))
+            item6.initializeItem(ListSintomas.getNameSintoma(10))
             //Nas
             var item7: SpinnerItem = SpinnerItem()
-            item7.initializeItem(ListSintomas.getSintoma(11))
+            item7.initializeItem(ListSintomas.getNameSintoma(11))
             //Orelles
             var item8: SpinnerItem = SpinnerItem()
-            item8.initializeItem(ListSintomas.getSintoma(12))
+            item8.initializeItem(ListSintomas.getNameSintoma(12))
             //Osos
             var item9: SpinnerItem = SpinnerItem()
-            item9.initializeItem(ListSintomas.getSintoma(13))
+            item9.initializeItem(ListSintomas.getNameSintoma(13))
             //Parts Baixes
             var item10: SpinnerItem = SpinnerItem()
-            item10.initializeItem(ListSintomas.getSintoma(14))
+            item10.initializeItem(ListSintomas.getNameSintoma(14))
             //Pit
             var item11: SpinnerItem = SpinnerItem()
-            item11.initializeItem(ListSintomas.getSintoma(15))
+            item11.initializeItem(ListSintomas.getNameSintoma(15))
             //Ulls
             var item12: SpinnerItem = SpinnerItem()
-            item12.initializeItem(ListSintomas.getSintoma(16))
+            item12.initializeItem(ListSintomas.getNameSintoma(16))
 
             ListS2 = mutableListOf(S2Title, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12)
         //Spinner 3 (S3) : Dolor Articulacions
@@ -187,7 +204,7 @@ class SintomasFragment : Fragment() {
             S3Title.initializeItem(ListSintomas.getSintoma(17))
             //Articculacio_1
             var item13: SpinnerItem = SpinnerItem()
-            item13.initializeItem(ListSintomas.getSintoma(18))
+            item13.initializeItem(ListSintomas.getNameSintoma(18))
 
             ListS3 = mutableListOf(S3Title, item13)
         //Febre
@@ -205,7 +222,7 @@ class SintomasFragment : Fragment() {
             S4Title.initializeItem(ListSintomas.getSintoma(24))
             //Forat1
             var item14: SpinnerItem = SpinnerItem()
-            item14.initializeItem(ListSintomas.getSintoma(25))
+            item14.initializeItem(ListSintomas.getNameSintoma(25))
 
             ListS4 = mutableListOf(S4Title, item14)
         //Tos

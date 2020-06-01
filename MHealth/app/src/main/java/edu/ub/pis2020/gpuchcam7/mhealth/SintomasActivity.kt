@@ -14,12 +14,14 @@ import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.FirebaseFirestore
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterIllness
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
+import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
 import kotlinx.android.synthetic.main.activity_sintomas.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 
 class SintomasActivity : AppCompatActivity() {
 
+    val sintomasReference = Sintomas()
     lateinit var listView: ListView
     //https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
     val db = FirebaseFirestore.getInstance()
@@ -33,12 +35,13 @@ class SintomasActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.found_sintomas)
 
-        var selectedSintomas = intent.getStringArrayListExtra("selecteds")
+        var selectedSintomas = intent.getIntegerArrayListExtra("selecteds")
         //settingIllnessDB()
         val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
         //val all_Illness: MutableList<Illness> = getIllnessDB()
 
         val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
+        //val listItems = mutableListOf<Illness>()
 
         //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
         correctResult(listItems)
@@ -65,7 +68,7 @@ class SintomasActivity : AppCompatActivity() {
         }
     }
 
-    fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: ArrayList<String>): MutableList<Illness>{
+    fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: ArrayList<Int>): MutableList<Illness>{
         var resultList: MutableList<Illness> = mutableListOf()
         var counter = 0
         //Busqueda Secuencial O(n)
@@ -73,7 +76,7 @@ class SintomasActivity : AppCompatActivity() {
             counter = 0
 
             for (it in sintomas){
-                if(item.getIllnessSintomas().contains(it)){
+                if(item.getIllnessSintomas().contains(sintomasReference.getNameSintoma(it))){
                     counter++
                 }
             }
@@ -141,9 +144,53 @@ class SintomasActivity : AppCompatActivity() {
         return dbList
     }
 
+    fun getHARDCODEDIllnessDB(): ArrayList<Illness> {
+        //HARDCODED EJEMPLO
+        var illnessList = arrayListOf<Illness>()
+
+        val illness_A :Illness = Illness("A")
+        illness_A.addIllnessSintoma("Símptoma 2")
+        illness_A.addIllnessSintoma("Símptoma 3")
+        illnessList.add(illness_A)
+
+        val illness_B :Illness = Illness("B")
+        illness_B.addIllnessSintoma("Símptoma 2")
+        illnessList.add(illness_B)
+
+        val illness_C :Illness = Illness("C")
+        illnessList.add(illness_C)
+
+        return illnessList
+    }
+
     fun settingIllnessDB(){
         //HARDCODED EJEMPLO
         var illnessList = arrayListOf<Illness>()
+
+        val illness_1 :Illness = Illness("Angina de pit")
+        //Causes
+        illness_1.addIllnessCause("ateroesclerosis coronària")
+        //Simpotems
+        illness_1.addIllnessSintoma("dolor al pit")
+        illness_1.addIllnessSintoma("dolor al braç esquerre")
+        illness_1.addIllnessSintoma("dolor al coll")
+        illness_1.addIllnessSintoma("dolor a la mandibula")
+        illness_1.addIllnessSintoma("dolor a l’esquena")
+        illness_1.addIllnessSintoma("disnea")
+        illness_1.addIllnessSintoma("mareig")
+        illness_1.addIllnessSintoma("pèrdua de coneixement")
+        illness_1.addIllnessSintoma("palidesa")
+        illness_1.addIllnessSintoma("suor")
+        illness_1.addIllnessSintoma("taquipnea")
+        illness_1.addIllnessSintoma("Símptoma 3")
+        //Remeis
+        //illness_1.addIllnessRemedy()
+        illnessList.add(illness_1)
+
+        db.collection("illness").document(illness_1.getIllnessName())
+            .set(illness_1)
+            .addOnSuccessListener { documentReference -> Log.d(TAG, "DocumentSnapshot succesfully written!") }
+            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
 
         val illness_A :Illness = Illness("A")
         illness_A.addIllnessSintoma("Símptoma 2")
@@ -184,24 +231,5 @@ class SintomasActivity : AppCompatActivity() {
             }*/
 
         Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
-    }
-
-    fun getHARDCODEDIllnessDB(): ArrayList<Illness> {
-        //HARDCODED EJEMPLO
-        var illnessList = arrayListOf<Illness>()
-
-        val illness_A :Illness = Illness("A")
-        illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 3")
-        illnessList.add(illness_A)
-
-        val illness_B :Illness = Illness("B")
-        illness_B.addIllnessSintoma("Símptoma 2")
-        illnessList.add(illness_B)
-
-        val illness_C :Illness = Illness("C")
-        illnessList.add(illness_C)
-
-        return illnessList
     }
 }

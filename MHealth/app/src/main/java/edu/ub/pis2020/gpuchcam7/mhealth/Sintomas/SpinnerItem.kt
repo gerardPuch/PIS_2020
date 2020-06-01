@@ -3,6 +3,7 @@ package edu.ub.pis2020.gpuchcam7.mhealth.Sintomas
 class SpinnerItem {
     lateinit var text: String
     var selected: Boolean = false
+    var id: Int = -1
 
     fun setTextItem(new: String){
         this.text = new
@@ -23,5 +24,13 @@ class SpinnerItem {
     fun initializeItem(new: String){
         this.text = new
         this.selected = false
+    }
+
+    fun setID(value: Int){
+        this.id = value
+    }
+
+    fun getID(): Int{
+        return  this.id
     }
 }
