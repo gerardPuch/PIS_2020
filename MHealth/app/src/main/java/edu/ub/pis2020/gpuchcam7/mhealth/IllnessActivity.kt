@@ -1,12 +1,14 @@
 package edu.ub.pis2020.gpuchcam7.mhealth
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterStringList
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
 import kotlinx.android.synthetic.main.activity_illness.*
+
 
 class IllnessActivity : AppCompatActivity() {
 
@@ -39,6 +41,17 @@ class IllnessActivity : AppCompatActivity() {
         listCauses.adapter = causesAdapter
         listSintomas.adapter = sintomasAdapter
         listRemedies.adapter = remediesAdapter
+
+        call_button.setOnClickListener {
+            val number = "671714702"
+            try {
+                val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
+                startActivity(intent)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
     }
 
     fun getSintomasNames(sintomasIDs: ArrayList<Int>): ArrayList<String>{

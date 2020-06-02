@@ -3,6 +3,7 @@
     package="edu.ub.pis2020.gpuchcam7.mhealth">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,6 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".NewDetailActivity"></activity>
         <activity android:name=".IllnessActivity" />
-        <activity android:name=".NewsActivity" />
         <activity
             android:name=".SintomasActivity"
             android:theme="@style/AppTheme" />
@@ -26,7 +26,6 @@
                 android:name="android.support.PARENT_ACTITIVY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Test" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
