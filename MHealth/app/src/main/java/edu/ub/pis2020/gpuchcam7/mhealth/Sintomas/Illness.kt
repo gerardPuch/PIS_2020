@@ -5,7 +5,7 @@ class Illness {
     private var coincidence_value: Int = 0
     private var coincidence_color: Int = 0
     private var causes: MutableList<String> = mutableListOf("empty")
-    private var sintomas: MutableList<String> = mutableListOf("empty")
+    private var sintomas: MutableList<Int> = mutableListOf()
     private var remedies: MutableList<String> = mutableListOf("empty")
 
     constructor(name: String){
@@ -13,10 +13,10 @@ class Illness {
         this.coincidence_value = 0
         this.coincidence_color = 0
         this.causes = mutableListOf("Casua 1")
-        this.sintomas = mutableListOf("Símptoma 1")
+        this.sintomas = mutableListOf()
         this.remedies = mutableListOf("Remei 1")
     }
-    constructor(name: String, causes: MutableList<String>, sintomas: MutableList<String>, remedies: MutableList<String>){
+    constructor(name: String, causes: MutableList<String>, sintomas: MutableList<Int>, remedies: MutableList<String>){
         this.name = name
         this.coincidence_value = 0
         this.coincidence_color = 0
@@ -57,11 +57,11 @@ class Illness {
         return causes
     }
 
-    fun addIllnessSintoma(new: String){
+    fun addIllnessSintoma(new: Int){
         sintomas.add(new)
     }
 
-    fun getIllnessSintomas(): MutableList<String>{
+    fun getIllnessSintomas(): MutableList<Int>{
         return sintomas
     }
 

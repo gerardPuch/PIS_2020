@@ -62,15 +62,15 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
         }else if(listItems.get(position).getIllnessCoincidenceColor() > 80){
             holder.mCoincidenceNumber.setBackgroundResource(R.drawable.red_circle_illness)
         }
-        isFromView = false;
+        isFromView = false
 
         holder.itemView.setOnClickListener({
             val intent = Intent(mContext, IllnessActivity::class.java)
             val causes = listItems.get(position).getIllnessCauses() as ArrayList<String>
-            val sintomas = listItems.get(position).getIllnessSintomas() as ArrayList<String>
+            val sintomas = listItems.get(position).getIllnessSintomas() as ArrayList<Int>
             val remedies = listItems.get(position).getIllnessRemedies() as ArrayList<String>
             intent.putStringArrayListExtra("causes", causes)
-            intent.putStringArrayListExtra("sintomas", sintomas)
+            intent.putIntegerArrayListExtra("sintomas", sintomas)
             intent.putStringArrayListExtra("remedies", remedies)
             mContext.startActivity(intent)
         })

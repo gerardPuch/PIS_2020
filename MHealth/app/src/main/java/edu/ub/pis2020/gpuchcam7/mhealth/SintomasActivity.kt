@@ -76,7 +76,7 @@ class SintomasActivity : AppCompatActivity() {
             counter = 0
 
             for (it in sintomas){
-                if(item.getIllnessSintomas().contains(sintomasReference.getNameSintoma(it))){
+                if(item.getIllnessSintomas().contains(it)){
                     counter++
                 }
             }
@@ -85,6 +85,9 @@ class SintomasActivity : AppCompatActivity() {
                 resultList.add(item)
             }
         }
+        if(resultList.isEmpty()){
+            textView_sintomas_activity.text = "No s'han trobat coincidencies"
+        }
         return resultList
     }
 
@@ -92,7 +95,7 @@ class SintomasActivity : AppCompatActivity() {
         val dbList =  mutableListOf<Illness>()
         val names = arrayListOf<String>()
         val causes = arrayListOf<ArrayList<String>>()
-        val sintomas = arrayListOf<ArrayList<String>>()
+        val sintomas = arrayListOf<ArrayList<Int>>()
         val remedies = arrayListOf<ArrayList<String>>()
 
         var coleccio = db.collection("illness")
@@ -107,7 +110,7 @@ class SintomasActivity : AppCompatActivity() {
                     var instance = Illness(
                         document.data["illnessName"] as String,
                         document.data["illnessCauses"] as ArrayList<String>,
-                        document.data["illnessSintomas"] as MutableList<String>,
+                        document.data["illnessSintomas"] as MutableList<Int>,
                         document.data["illnessRemedies"] as MutableList<String>)
                     dbList.add(instance)
                 }
@@ -148,50 +151,28 @@ class SintomasActivity : AppCompatActivity() {
         //HARDCODED EJEMPLO
         var illnessList = arrayListOf<Illness>()
 
-        val illness_A :Illness = Illness("A")
-        illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 3")
-        illnessList.add(illness_A)
+        val illness_1 :Illness = Illness("Angina de pit")
+        //Causes
+        illness_1.addIllnessCause("Ateroesclerosis coronària")
+        //Simpotems 15,9,5,20,23
+        illness_1.addIllnessSintoma(5)
+        illness_1.addIllnessSintoma(9)
+        illness_1.addIllnessSintoma(15)
+        illness_1.addIllnessSintoma(20)
+        illness_1.addIllnessSintoma(23)
+        //Remeis
+        illness_1.addIllnessRemedy("Si és la primera vegada anar al metge")
+        illness_1.addIllnessRemedy("Nitrats sublinguals, si no para anar al metge!")
+        illness_1.addIllnessRemedy("Betabloquejants, Calciantagonistes, Nitrats, Ivabradina")
 
-        val illness_B :Illness = Illness("B")
-        illness_B.addIllnessSintoma("Símptoma 2")
-        illnessList.add(illness_B)
-
-        val illness_C :Illness = Illness("C")
-        illnessList.add(illness_C)
+        illnessList.add(illness_1)
 
         return illnessList
     }
 
     fun settingIllnessDB(){
-        //HARDCODED EJEMPLO
-        var illnessList = arrayListOf<Illness>()
 
-        val illness_1 :Illness = Illness("Angina de pit")
-        //Causes
-        illness_1.addIllnessCause("ateroesclerosis coronària")
-        //Simpotems
-        illness_1.addIllnessSintoma("dolor al pit")
-        illness_1.addIllnessSintoma("dolor al braç esquerre")
-        illness_1.addIllnessSintoma("dolor al coll")
-        illness_1.addIllnessSintoma("dolor a la mandibula")
-        illness_1.addIllnessSintoma("dolor a l’esquena")
-        illness_1.addIllnessSintoma("disnea")
-        illness_1.addIllnessSintoma("mareig")
-        illness_1.addIllnessSintoma("pèrdua de coneixement")
-        illness_1.addIllnessSintoma("palidesa")
-        illness_1.addIllnessSintoma("suor")
-        illness_1.addIllnessSintoma("taquipnea")
-        illness_1.addIllnessSintoma("Símptoma 3")
-        //Remeis
-        //illness_1.addIllnessRemedy()
-        illnessList.add(illness_1)
-
-        db.collection("illness").document(illness_1.getIllnessName())
-            .set(illness_1)
-            .addOnSuccessListener { documentReference -> Log.d(TAG, "DocumentSnapshot succesfully written!") }
-            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
-
+        /*
         val illness_A :Illness = Illness("A")
         illness_A.addIllnessSintoma("Símptoma 2")
         illness_A.addIllnessSintoma("Símptoma 3")
@@ -229,6 +210,8 @@ class SintomasActivity : AppCompatActivity() {
             .addOnFailureListener {e ->
                 Log.w(TAG, "Error adding document", e)
             }*/
+
+         */
 
         Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
     }
