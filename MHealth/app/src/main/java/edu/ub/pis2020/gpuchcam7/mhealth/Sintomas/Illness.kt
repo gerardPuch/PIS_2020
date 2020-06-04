@@ -4,17 +4,17 @@ class Illness {
     private var name: String = "name"
     private var coincidence_value: Int = 0
     private var coincidence_color: Int = 0
-    private var causes: MutableList<String> = mutableListOf("empty")
+    private var causes: MutableList<String> = mutableListOf()
     private var sintomas: MutableList<Int> = mutableListOf()
-    private var remedies: MutableList<String> = mutableListOf("empty")
+    private var remedies: MutableList<String> = mutableListOf()
 
     constructor(name: String){
         this.name = name
         this.coincidence_value = 0
         this.coincidence_color = 0
-        this.causes = mutableListOf("Casua 1")
+        this.causes = mutableListOf()
         this.sintomas = mutableListOf()
-        this.remedies = mutableListOf("Remei 1")
+        this.remedies = mutableListOf()
     }
     constructor(name: String, causes: MutableList<String>, sintomas: MutableList<Int>, remedies: MutableList<String>){
         this.name = name

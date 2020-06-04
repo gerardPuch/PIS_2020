@@ -12,6 +12,7 @@ import androidx.core.view.size
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterIllness
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
@@ -35,19 +36,23 @@ class SintomasActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.found_sintomas)
 
-        var selectedSintomas = intent.getIntegerArrayListExtra("selecteds")
-        //settingIllnessDB()
-        val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
-        //val all_Illness: MutableList<Illness> = getIllnessDB()
+        //var selectedSintomas = intent.getIntegerArrayListExtra("selecteds")
 
-        val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
+        settingIllnessDB()
+
+        //val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
+        val all_Illness: MutableList<Illness> = mutableListOf()
+        getIllnessDB(all_Illness)
+
+        //val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
+        val listItems = searchIllnessCoincidence(all_Illness, arrayListOf(0,1,2,3))
         //val listItems = mutableListOf<Illness>()
 
         //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
         correctResult(listItems)
 
-        //Asociar adapter
 
+        //Asociar adapter
         val adapter = AdapterIllness(this, 0, listItems)
         listView.adapter = adapter
     }
@@ -90,23 +95,14 @@ class SintomasActivity : AppCompatActivity() {
         }
         return resultList
     }
-
-    fun getIllnessDB(): MutableList<Illness>{
-        val dbList =  mutableListOf<Illness>()
-        val names = arrayListOf<String>()
-        val causes = arrayListOf<ArrayList<String>>()
-        val sintomas = arrayListOf<ArrayList<Int>>()
-        val remedies = arrayListOf<ArrayList<String>>()
-
-        var coleccio = db.collection("illness")
+    //https://medium.com/kotlin-en-android/coroutines-con-kotlin-suspend-functions-9f9994ddd713
+    fun getIllnessDB(dbList: MutableList<Illness>){
+        val coleccio = db.collection("illness")
+        coleccio
             .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
+            .addOnSuccessListener { result ->
+                for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
-                    /*names.add(document.data["illnessName"].toString())
-                    causes.add(document.data["illnessCauses"] as ArrayList<String>)
-                    sintomas.add(document.data["illnessSintomas"] as ArrayList<String>)
-                    remedies.add(document.data["illnessRemedies"] as ArrayList<String>)*/
                     var instance = Illness(
                         document.data["illnessName"] as String,
                         document.data["illnessCauses"] as ArrayList<String>,
@@ -118,33 +114,6 @@ class SintomasActivity : AppCompatActivity() {
             .addOnFailureListener{ exception ->
                 Log.w(TAG, "Error getting documents", exception)
             }
-
-        /*val query = db.collection("illness")
-        val registration = query.addSnapshotListener { snapshots, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e)
-                return@addSnapshotListener
-            }
-            for (doc in snapshots!!) {
-                var instance = Illness(
-                    doc.getData().get("illnessName") as String,
-                    doc.getData().get("illnessCauses") as ArrayList<String>,
-                    doc.getData().get("illnessSintomas") as MutableList<String>,
-                    doc.getData().get("illnessRemedies") as MutableList<String>)
-                dbList.add(instance)
-            }
-        }*/
-
-        /*registration.remove()*/
-
-            /*var testMap = it.getData()
-            var instance = Illness(
-                testMap!!.get("illnessName") as String,
-                testMap!!.get("illnessCauses") as ArrayList<String>,
-                testMap!!.get("illnessSintomas") as MutableList<String>,
-                testMap!!.get("illnessRemedies") as MutableList<String>)
-            dbList.add(instance)*/
-        return dbList
     }
 
     fun getHARDCODEDIllnessDB(): ArrayList<Illness> {
@@ -154,16 +123,30 @@ class SintomasActivity : AppCompatActivity() {
         val illness_1 :Illness = Illness("Angina de pit")
         //Causes
         illness_1.addIllnessCause("Ateroesclerosis coronària")
-        //Simpotems 15,9,5,20,23
-        illness_1.addIllnessSintoma(5)
-        illness_1.addIllnessSintoma(9)
-        illness_1.addIllnessSintoma(15)
-        illness_1.addIllnessSintoma(20)
-        illness_1.addIllnessSintoma(23)
+        //Simpotems
+        illness_1.addIllnessSintoma(25) //Pit_D
+        illness_1.addIllnessSintoma(20) //Coll_D
+        illness_1.addIllnessSintoma(16) //Disnea
+        illness_1.addIllnessSintoma(36) //Mareig
+        illness_1.addIllnessSintoma(42) //Pèrdua de coneixement
+        illness_1.addIllnessSintoma(40) //Palidesa
+        illness_1.addIllnessSintoma(59) //Suor
+        illness_1.addIllnessSintoma(51) //Taquipnea_R
+        //illness_1.addIllnessSintoma() // Esquena_D
+        //illness_1.addIllnessSintoma() // Braç esquerra_D
+        //illness_1.addIllnessSintoma() // Mandibula_D
         //Remeis
         illness_1.addIllnessRemedy("Si és la primera vegada anar al metge")
         illness_1.addIllnessRemedy("Nitrats sublinguals, si no para anar al metge!")
         illness_1.addIllnessRemedy("Betabloquejants, Calciantagonistes, Nitrats, Ivabradina")
+
+        //
+        val illness_A :Illness = Illness("D")
+        illness_A.addIllnessSintoma(0)
+        illness_A.addIllnessSintoma(1)
+        illness_A.addIllnessSintoma(2)
+        illness_A.addIllnessSintoma(3)
+        illnessList.add(illness_A)
 
         illnessList.add(illness_1)
 
@@ -171,11 +154,13 @@ class SintomasActivity : AppCompatActivity() {
     }
 
     fun settingIllnessDB(){
+        var illnessList = arrayListOf<Illness>()
 
-        /*
         val illness_A :Illness = Illness("A")
-        illness_A.addIllnessSintoma("Símptoma 2")
-        illness_A.addIllnessSintoma("Símptoma 3")
+        illness_A.addIllnessSintoma(0)
+        illness_A.addIllnessSintoma(1)
+        illness_A.addIllnessSintoma(2)
+        illness_A.addIllnessSintoma(3)
         illnessList.add(illness_A)
 
         db.collection("illness").document(illness_A.getIllnessName())
@@ -185,7 +170,9 @@ class SintomasActivity : AppCompatActivity() {
 
 
         val illness_B :Illness = Illness("B")
-        illness_B.addIllnessSintoma("Símptoma 2")
+        illness_B.addIllnessSintoma(0)
+        illness_B.addIllnessSintoma(1)
+        illness_B.addIllnessSintoma(2)
         illnessList.add(illness_B)
 
         db.collection("illness").document(illness_B.getIllnessName())
@@ -195,6 +182,8 @@ class SintomasActivity : AppCompatActivity() {
 
 
         val illness_C :Illness = Illness("C")
+        illness_C.addIllnessSintoma(0)
+        illness_C.addIllnessSintoma(1)
         illnessList.add(illness_C)
 
         db.collection("illness").document(illness_C.getIllnessName())
@@ -210,8 +199,6 @@ class SintomasActivity : AppCompatActivity() {
             .addOnFailureListener {e ->
                 Log.w(TAG, "Error adding document", e)
             }*/
-
-         */
 
         Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
     }
