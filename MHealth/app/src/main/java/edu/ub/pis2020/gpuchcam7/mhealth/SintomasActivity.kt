@@ -40,13 +40,12 @@ class SintomasActivity : AppCompatActivity() {
 
         settingIllnessDB()
 
-        //val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
-        val all_Illness: MutableList<Illness> = mutableListOf()
+        val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
+        //val all_Illness: MutableList<Illness> = mutableListOf()
         getIllnessDB(all_Illness)
 
         //val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
         val listItems = searchIllnessCoincidence(all_Illness, arrayListOf(0,1,2,3))
-        //val listItems = mutableListOf<Illness>()
 
         //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
         correctResult(listItems)

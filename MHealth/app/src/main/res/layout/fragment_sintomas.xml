@@ -3,14 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SintomasFragment">
+    tools:context=".SintomasFragment"
+    android:background="@color/colorBackground">
 
     <Button
         android:id="@+id/btnNext"
-        android:layout_width="match_parent"
+        android:background="@drawable/next_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="NEXT" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="NEXT"
+        android:textSize="25sp"
+        android:layout_marginBottom="10dp"
+
+        android:textColor="@color/colorBackground"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,12 +26,6 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-        </FrameLayout>
 
         <ScrollView
             android:layout_width="246dp"
@@ -40,47 +40,64 @@
                 <CheckBox
                     android:id="@+id/Sintoma1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
                     android:id="@+id/Spinner1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    />
 
                 <CheckBox
                     android:id="@+id/Sintoma7"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
                     android:id="@+id/Spinner2"
@@ -90,17 +107,23 @@
                 <CheckBox
                     android:id="@+id/Sintoma9"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma10"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma11"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
                     android:id="@+id/Spinner3"
@@ -115,27 +138,37 @@
                 <CheckBox
                     android:id="@+id/Sintoma12"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma13"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma14"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma15"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma16"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
                     android:id="@+id/Spinner5"
@@ -145,47 +178,65 @@
                 <CheckBox
                     android:id="@+id/Sintoma17"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma18"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma19"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma20"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma21"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma22"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma23"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma24"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma25"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
                     android:id="@+id/Spinner6"
@@ -205,12 +256,16 @@
                 <CheckBox
                     android:id="@+id/Sintoma26"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma27"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
                     android:id="@+id/Spinner9"
@@ -220,53 +275,61 @@
                 <CheckBox
                     android:id="@+id/Sintoma28"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma29"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma30"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma31"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma32"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma33"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma34"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma35"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
 
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="CORONAVIRUS"
-        android:textSize="50sp" />
-
 </FrameLayout>
