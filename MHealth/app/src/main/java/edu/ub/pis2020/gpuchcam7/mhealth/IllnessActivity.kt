@@ -43,7 +43,7 @@ class IllnessActivity : AppCompatActivity() {
         listRemedies.adapter = remediesAdapter
 
         call_button.setOnClickListener {
-            val number = "671714702"
+            val number = "112"
             try {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
                 startActivity(intent)
