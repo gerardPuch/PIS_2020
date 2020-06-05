@@ -43,7 +43,7 @@ class Sintomas {
             "Cervicals_D",//38
             "Coll_D",//39
             "Dents_D",//40
-            "Esquena_D",//41
+            "Esquena",//41
             "Lumbar_D",//42
             "Nas_D",//43
             "Orelles_D",//44
@@ -82,8 +82,8 @@ class Sintomas {
         "Oliguria",//77
         "Orina fosca",//78
         "Palidesa",//79
-        "Palpitacions",//80
-        "Paràlisi",//81 S8
+        "Palpitacions",//80 S8
+            "Paràlisi_PA",//81
             "Braços_PA",//82
             "Cames_PA",//83
             "Cara_PA",//84
