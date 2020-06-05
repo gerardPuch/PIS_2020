@@ -3,71 +3,148 @@ package edu.ub.pis2020.gpuchcam7.mhealth.Sintomas
 class Sintomas {
     val ListSintomas = mutableListOf<String>(
         "Acropàquies",//0
-        "Afonia",//1
-        "Alucinacions",//2
-        "Alteració de la consciència",//3
-        "Ansietat",//4
-        "Apnea nocturna",//5
-        "Arritmies",//6 S1
-            "Bardicardia_A",//7
-            "Taquicardia_A",//8
-        "Brunzit d'orelles",//9
-        "Convulsions",//10
-        "Debilitat",//11 S2
-            "General_DE",//12
-            "Part del cos_1_DE",//13
-        "Diarrea",//14
-        "Disfagia",//15
-        "Disnea",//16
-        "Dolor",//17 S3
-            "Abdomen_D",//18
-            "Cap_D",//19
-            "Coll_D",//20
-            "Dents_D",//21
-            "Nas_D",//22
-            "Orelles_D",//23
-            "Osos_D",//24
-            "Parts Baixes_D",//25
-            "Pit_D",//26
-            "Ulls_D",//27
-        "Dolor articulacions",//28 S4
-            "Articculacio_1_AT",//29
-        "Espasmes",//30
-        "Fatiga",//31
-        "Febre",//32
-        "Halitosi",//33
-        "Icterícia",//34
-        "Inflat",//35 S5
-            "Part del cos_1_I",//36
-        "Mareig",//37
-        "Mocs",//38
-        "Mort",//39
-        "Nauseas",//40
-        "Palidesa",//41
-        "Paràlisi",//42
-        "Pèrdua de coneixement",//43
-        "Pèrdua de gana",//44
-        "Pèrdua de pes",//45
-        "Pèrdua de sensibilitat",//46 S6
-            "Part del cos_1_SE",//47
-        "Pupiles",//48 S7
-            "Contretes_P",//49
-            "Dilatades_P",//50
-        "Respiració",//51 S8
-            "Taquipnea_R",//52
-            "Bradipnea_R",//53
-        "Rigidesa al clatell",//54
-        "Roncs",//55
-        "Sagnat",//56 S9
-            "Forat1_S",//57
-        "Secreció retral",//58
-        "Son",//59
-        "Suor",//60
-        "Tos",//61
-        "Úlceres",//62
-        "Visió borrosa",//63
-        "Vómit",//64
-        "Xiulets al respirar"//65
+        "Adenopaties",//1
+        "Afonia",//2
+        "Alucinacions",//3
+        "Alteració de la consciència",//4
+        "Alteració de la conducta/personalitat",//5
+        "Alteradió de la marxa",//6
+        "Alteradió de la parla",//7
+        "Alteradió de l'equilibri",//8
+        "Ansietat",//9
+        "Apnea nocturna",//10
+        "Arritmies",//11 S1
+            "Bardicardia_A",//12
+            "Taquicardia_A",//13
+        "Bony a la pell",//14
+        "Brunzit d'orelles",//15
+        "Butllofes",//16 S2
+            "Grans_B",//17
+            "Petites_B",//18
+        "Calfreds",//19
+        "Cianosi",//20
+        "Convulsions",//21
+        "Debilitat",//22 S3
+            "Braços_DE",//23
+            "Cames_DE",//24
+            "Cara_DE",//25
+            "General_DE",//26
+            "Mitja cara_DE",//27
+            "Mig cos_DE",//28
+        "Demència",//29
+        "Deterirament intelectual",//30
+        "Diarrea",//31
+        "Disfagia",//32
+        "Disnea",//33
+        "Dolor",//34 S4
+            "Abdomen_D",//35
+            "Cap_D",//36
+            "Cara_D",//37
+            "Cervicals_D",//38
+            "Coll_D",//39
+            "Dents_D",//40
+            "Esquena",//41
+            "Lumbar_D",//42
+            "Nas_D",//43
+            "Orelles_D",//44
+            "Osos_D",//45
+            "Parts Baixes_D",//46
+            "Pit_D",//47
+            "Ulls_D",//48
+        "Dolor articulacions",//49 S5
+            "Cervicals_AT",//50
+            "Genolls_AT",//51
+            "Lumbars_AT",//52
+            "Mans_AT",//53
+            "Peus_AT",//54
+        "Dolor al menjar",//55
+        "Espasmes",//56
+        "Estrenyiment",//57
+        "Fatiga",//58
+        "Febre",//59
+        "Femtes",//60 S6
+            "Clares_F",//61
+            "Olioses_F",//62
+        "Halitosi",//63
+        "Icterícia",//64
+        "Impotència",//65
+        "Incontinencia urinària",//66
+        "Inflamació",//67 S7
+            "Abdomen_I",//68
+            "Cames_I",//69
+            "Cara_I",//70
+        "Insomni",//71
+        "Malestar General",//72
+        "Mareig",//73
+        "Mocs",//74
+        "Mort",//75
+        "Nauseas",//76
+        "Oliguria",//77
+        "Orina fosca",//78
+        "Palidesa",//79
+        "Palpitacions",//80 S8
+            "Paràlisi_PA",//81
+            "Braços_PA",//82
+            "Cames_PA",//83
+            "Cara_PA",//84
+            "General_PA",//85
+            "Mitja cara_PA",//86
+            "Mig cos_PA",//87
+        "Parpella caiguda",//88
+        "Pèrdua de coneixement",//89
+        "Pèrdua de gana",//90
+        "Pèrdua de memòria",//91
+        "Pèrdua de pes",//92
+        "Pèrdua de sensibilitat",//93 S9
+            "Braços_SE",//94
+            "Cames_SE",//95
+            "Cara_SE",//96
+            "General_SE",//97
+            "Mitja cara_SE",//98
+            "Mig cos_SE",//99
+        "Picor",//100 S10
+            "Parts baixes_PI",//101
+            "Pell_PI",//102
+        "Pupiles",//103 S11
+            "Contretes_P",//104
+            "Dilatades_P",//105
+        "Respiració",//106 S12
+            "Taquipnea_R",//107
+            "Bradipnea_R",//108
+        "Retràs mental",//109
+        "Rigidesa",//110
+        "Rigidesa al clatell",//111
+        "Roncs",//112
+        "Sagnat",//113 S13
+            "Amb les deposicions_S",//114
+            "Amb l'orina_S",//115
+            "Boca_S",//116
+            "Nas_S",//117
+        "Secreció uretral",//118
+        "Sensacions extranyes",//119 S14
+            "Braç_EX",//120
+            "Cama_EX",//121
+            "General_EX",//122
+        "Son",//123
+        "Sordesa",//124
+        "Suor",//125
+        "Taques a la pell",//126 S15
+            "Blanques_TA",//127
+            "Liles_TA",//128
+            "Marrons_TA",//129
+            "Negres_TA",//130
+            "Vermelles_TA",//131
+        "Tremolor",//132
+        "Tos",//133 S16
+            "Amb mocs_T",//134
+            "Amb sang_T",//135
+            "Seca_T",//136
+        "Úlceres",//137
+        "Verrugues",//138
+        "Visió borrosa",//139
+        "Visió doble",//140
+        "Vómit",//141
+        "Xiulets al respirar"//142
     )
 
     fun getNumSintomas(): Int{

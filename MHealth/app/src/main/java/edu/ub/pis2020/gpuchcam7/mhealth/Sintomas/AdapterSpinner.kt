@@ -56,10 +56,12 @@ class AdapterSpinner(context: Context, resource: Int, objects: MutableList<Spinn
         holder.mCheckBox!!.setChecked(listState.get(position).isSelected());
         isFromView = false;
 
-        if ((position == 0)) {
-            holder.mCheckBox.setVisibility(View.INVISIBLE);
-        } else {
-            holder.mCheckBox.setVisibility(View.VISIBLE);
+        if(listState.size > 1){
+            if ((position == 0)) {
+                holder.mCheckBox.setVisibility(View.INVISIBLE);
+            } else {
+                holder.mCheckBox.setVisibility(View.VISIBLE);
+            }
         }
         holder.mCheckBox.setTag(position);
         holder.mCheckBox.setOnCheckedChangeListener({ buttonView, isChecked ->
