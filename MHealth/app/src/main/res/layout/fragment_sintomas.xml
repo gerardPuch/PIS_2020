@@ -38,6 +38,13 @@
                 android:orientation="vertical">
 
                 <CheckBox
+                    android:id="@+id/Sintoma0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
                     android:id="@+id/Sintoma1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,12 +86,6 @@
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
 
-                <Spinner
-                    android:id="@+id/Spinner1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
                 <CheckBox
                     android:id="@+id/Sintoma7"
                     android:layout_width="match_parent"
@@ -98,11 +99,6 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
-
-                <Spinner
-                    android:id="@+id/Spinner2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma9"
@@ -118,36 +114,11 @@
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
 
-                <CheckBox
-                    android:id="@+id/Sintoma11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
 
                 <Spinner
-                    android:id="@+id/Spinner3"
+                    android:id="@+id/Spinner1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <Spinner
-                    android:id="@+id/Spinner4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/Sintoma14"
@@ -163,31 +134,10 @@
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
 
-                <CheckBox
-                    android:id="@+id/Sintoma16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
                 <Spinner
-                    android:id="@+id/Spinner5"
+                    android:id="@+id/Spinner2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma17"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma18"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma19"
@@ -210,74 +160,10 @@
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
 
-                <CheckBox
-                    android:id="@+id/Sintoma22"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma23"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma24"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
                 <Spinner
-                    android:id="@+id/Spinner6"
+                    android:id="@+id/Spinner3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <Spinner
-                    android:id="@+id/Spinner7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <Spinner
-                    android:id="@+id/Spinner8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma26"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma27"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
-
-                <Spinner
-                    android:id="@+id/Spinner9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/Sintoma28"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
                     android:id="@+id/Sintoma29"
@@ -314,15 +200,339 @@
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
 
+                <Spinner
+                    android:id="@+id/Spinner4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/Spinner5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <CheckBox
-                    android:id="@+id/Sintoma34"
+                    android:id="@+id/Sintoma55"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
                     android:buttonTint="@color/colorIcon"/>
 
                 <CheckBox
-                    android:id="@+id/Sintoma35"
+                    android:id="@+id/Sintoma56"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma57"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma58"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma59"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma63"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma64"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma65"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma66"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma71"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma72"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma73"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma74"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma75"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma76"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma77"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma78"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma79"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma80"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma88"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma89"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma90"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma91"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma92"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/Spinner10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/Spinner11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/Spinner12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma109"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma110"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma112"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma118"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma123"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma124"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma125"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma132"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <Spinner
+                    android:id="@+id/Spinner16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma137"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma138"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma139"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma140"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma141"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorText"
+                    android:buttonTint="@color/colorIcon"/>
+
+                <CheckBox
+                    android:id="@+id/Sintoma142"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
