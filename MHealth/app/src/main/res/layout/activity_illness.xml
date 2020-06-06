@@ -7,51 +7,77 @@
     tools:context=".IllnessActivity"
     android:background="@color/colorBackground">
 
-        //Illness info
-        <LinearLayout
-            android:orientation="vertical"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ScrollView>
+    //Illness info
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Causes:"
+            android:textStyle="bold"
+            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorIcon"/>
 
-            <TextView
-                android:text="Causes:"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorIcon"/>
+        <ListView
+            android:id="@+id/illness_causes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <ListView
-                android:id="@+id/illness_causes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Símptomes:"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorIcon"/>
 
-            <TextView
-                android:text="Símptomes:"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorIcon"/>
+        <ListView
+            android:id="@+id/illness_sintomas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <ListView
-                android:id="@+id/illness_sintomas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Remeis:"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorIcon"/>
 
-            <TextView
-                android:text="Remeis:"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorIcon"/>
+        <ListView
+            android:id="@+id/illness_remedies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <ListView
-                android:id="@+id/illness_remedies"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="175dp"/>
+
         </LinearLayout>
+    <LinearLayout
+        android:id="@+id/call_button_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center|bottom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trucar a emergències (112)"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:layout_gravity="center_horizontal"/>
 
         //Call button
         <ImageButton
@@ -63,4 +89,5 @@
             android:layout_width="300dp"
             android:layout_height="100dp"/>
 
+    </LinearLayout>
 </FrameLayout>

@@ -66,7 +66,7 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
             holder.mCoincidenceNumber.setBackgroundResource(R.drawable.red_circle_illness)
         }
 
-        if(listItems.get(position).getIllnessCoincidenceValue() == 0){
+        if(listItems.get(position).getIllnessCoincidenceValue() == 0){ //Cuando el valor sea 0, será cuando se muestren todas las enfermedades
             holder.mCoincidenceFrame.visibility = View.GONE
             holder.mTextView.gravity = Gravity.CENTER_HORIZONTAL
         }
@@ -74,6 +74,8 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
         isFromView = false
 
         holder.itemView.setOnClickListener({
+            var allIllness = false
+            if(listItems.get(position).getIllnessCoincidenceValue() == 0){ allIllness = true }
             val intent = Intent(mContext, IllnessActivity::class.java)
             val causes = listItems.get(position).getIllnessCauses() as ArrayList<String>
             val sintomas = listItems.get(position).getIllnessSintomas() as ArrayList<Int>
@@ -81,6 +83,7 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
             intent.putStringArrayListExtra("causes", causes)
             intent.putIntegerArrayListExtra("sintomas", sintomas)
             intent.putStringArrayListExtra("remedies", remedies)
+            intent.putExtra("allIllness", allIllness)
             mContext.startActivity(intent)
         })
 

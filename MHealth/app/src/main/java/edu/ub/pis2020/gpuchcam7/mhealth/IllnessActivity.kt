@@ -3,6 +3,7 @@ package edu.ub.pis2020.gpuchcam7.mhealth
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterStringList
@@ -30,6 +31,10 @@ class IllnessActivity : AppCompatActivity() {
         recievedSintomas = intent.getIntegerArrayListExtra("sintomas")
         recievedRemedies = intent.getStringArrayListExtra("remedies")
 
+        val allIllness = intent.getBooleanExtra("allIllness", true)
+        if(allIllness == true){
+            call_button_frame.visibility = View.GONE
+        }
         listCauses = findViewById(R.id.illness_causes)
         listSintomas = findViewById(R.id.illness_sintomas)
         listRemedies = findViewById(R.id.illness_remedies)
