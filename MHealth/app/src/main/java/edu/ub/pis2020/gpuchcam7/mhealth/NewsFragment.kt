@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import dmax.dialog.SpotsDialog
-import edu.ub.pis2020.gpuchcam7.mhealth.Adapter.ListNewsAdapter
-import edu.ub.pis2020.gpuchcam7.mhealth.Common.Common
-import edu.ub.pis2020.gpuchcam7.mhealth.Interface.NewsService
-import edu.ub.pis2020.gpuchcam7.mhealth.Model.News
+import edu.ub.pis2020.gpuchcam7.mhealth.News.ListNewsAdapter
+import edu.ub.pis2020.gpuchcam7.mhealth.News.Common
+import edu.ub.pis2020.gpuchcam7.mhealth.News.NewsService
+import edu.ub.pis2020.gpuchcam7.mhealth.News.News
 import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.android.synthetic.main.fragment_news.swipe_to_refresh
 import retrofit2.Call
@@ -106,7 +106,11 @@ class NewsFragment : Fragment() {
                         //El primer objeto de las hot news es un duplicado, tenemos que eliminarlo
                         listItem!!.removeAt(0)
 
-                        adapter = ListNewsAdapter(listItem!!, parentContext)
+                        adapter =
+                            ListNewsAdapter(
+                                listItem!!,
+                                parentContext
+                            )
                         adapter.notifyDataSetChanged()
                         list_news.adapter = adapter
 
@@ -143,7 +147,11 @@ class NewsFragment : Fragment() {
                         //El primer objeto de las hot news es un duplicado, tenemos que eliminarlo
                         listItem!!.removeAt(0)
 
-                        adapter = ListNewsAdapter(listItem!!, parentContext)
+                        adapter =
+                            ListNewsAdapter(
+                                listItem!!,
+                                parentContext
+                            )
                         adapter.notifyDataSetChanged()
                         list_news.adapter = adapter
                     }

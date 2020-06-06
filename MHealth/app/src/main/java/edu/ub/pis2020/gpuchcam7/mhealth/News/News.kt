@@ -1,4 +1,6 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Model
+package edu.ub.pis2020.gpuchcam7.mhealth.News
+
+import edu.ub.pis2020.gpuchcam7.mhealth.News.Articles
 
 class News {
     var status: String? = null

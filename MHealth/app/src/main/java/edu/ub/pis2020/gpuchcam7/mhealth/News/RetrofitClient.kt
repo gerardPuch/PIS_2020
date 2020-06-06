@@ -1,9 +1,9 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Remote
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitClient {
+object RetrofitClient { //Interficie per fer crides web
     private var retrofit: Retrofit? = null
 
     fun getClient(baseUrl: String?): Retrofit{

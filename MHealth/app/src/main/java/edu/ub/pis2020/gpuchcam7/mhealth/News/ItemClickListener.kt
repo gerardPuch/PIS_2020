@@ -1,4 +1,4 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Interface
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
 import android.view.View
 

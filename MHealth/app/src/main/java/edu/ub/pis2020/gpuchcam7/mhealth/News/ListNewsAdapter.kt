@@ -1,16 +1,11 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Adapter
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import edu.ub.pis2020.gpuchcam7.mhealth.Adapter.ViewHolder.ListNewsViewHolder
-import edu.ub.pis2020.gpuchcam7.mhealth.Common.ISO8601Parser
-import edu.ub.pis2020.gpuchcam7.mhealth.Interface.ItemClickListener
-import edu.ub.pis2020.gpuchcam7.mhealth.Model.Articles
 import edu.ub.pis2020.gpuchcam7.mhealth.NewDetailActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.R
 import java.text.ParseException

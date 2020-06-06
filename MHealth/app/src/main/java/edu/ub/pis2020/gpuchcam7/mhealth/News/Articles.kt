@@ -1,4 +1,4 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Model
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
 class Articles {
     var author: String? = null

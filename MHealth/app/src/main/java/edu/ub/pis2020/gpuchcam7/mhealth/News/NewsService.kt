@@ -1,8 +1,5 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Interface
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
-import android.provider.ContactsContract
-import edu.ub.pis2020.gpuchcam7.mhealth.Model.News
-import edu.ub.pis2020.gpuchcam7.mhealth.Model.Website
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url

@@ -1,4 +1,4 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Common
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
 import java.lang.StringBuilder
 import java.text.SimpleDateFormat

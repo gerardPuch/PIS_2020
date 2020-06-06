@@ -1,7 +1,6 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Common
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
-import edu.ub.pis2020.gpuchcam7.mhealth.Interface.NewsService
-import edu.ub.pis2020.gpuchcam7.mhealth.Remote.RetrofitClient
+import edu.ub.pis2020.gpuchcam7.mhealth.News.RetrofitClient
 
 object Common {
     val BASE_URL = "https://newsapi.org/"

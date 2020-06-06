@@ -1,8 +1,7 @@
-package edu.ub.pis2020.gpuchcam7.mhealth.Adapter.ViewHolder
+package edu.ub.pis2020.gpuchcam7.mhealth.News
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import edu.ub.pis2020.gpuchcam7.mhealth.Interface.ItemClickListener
 import kotlinx.android.synthetic.main.news_layout.view.*
 
 class ListNewsViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView), View.OnClickListener {
