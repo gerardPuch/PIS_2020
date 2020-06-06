@@ -30,18 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/top_author"
-                    android:gravity="top|left"
-                    android:fontFamily="sans-serif-condensed"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:textSize="25sp"
-                    android:textColor="@android:color/white"
-                    android:text="Author"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
                 <LinearLayout
                     android:orientation="vertical"
                     android:background="@color/colorPrimaryDark"

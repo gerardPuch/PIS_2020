@@ -26,7 +26,7 @@ import retrofit2.Response
  */
 class NewsFragment : Fragment() {
 
-    var webHotUrl: String? = ""
+    var webHotUrl: String = "https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be"
 
     lateinit var dialog: AlertDialog
     lateinit var mService: NewsService
@@ -56,13 +56,6 @@ class NewsFragment : Fragment() {
             loadNews(true)
         }
 
-        diagonalLayout.setOnClickListener{
-            /*val detail = Intent(baseContext, NewDetailActivity::class.java)
-            detail.putExtra("webURL", webHotUrl)
-            detail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
-            startActivity(detail)*/
-        }
-
         list_news.setHasFixedSize(true)
         list_news.layoutManager = LinearLayoutManager(parentContext)
 
@@ -87,7 +80,7 @@ class NewsFragment : Fragment() {
     private fun loadNews(isRefreshed: Boolean) {
         if(isRefreshed){
             dialog.show()
-            mService.getNewsFromSource("https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be")
+            mService.getNewsFromSource(webHotUrl)
                 .enqueue(object : retrofit2.Callback<News> {
                     override fun onFailure(call: Call<News>, t: Throwable) {
                         TODO("Not yet implemented")
@@ -96,33 +89,33 @@ class NewsFragment : Fragment() {
                     override fun onResponse(call: Call<News>, response: Response<News>) {
                         dialog.dismiss()
 
+                        if(response!!.body()!!.articles!![0].urlToImage == null){// si no hay imagen disponible se carga una por defecto
+                            response!!.body()!!.articles!![0].urlToImage = "https://www.eventoplus.com/content/thumbs/960_540/content/imgsxml/galerias/noticias/6883/big-comunicado-oms-urgencias652.jpg"
+                        }
+
                         //Obtener primer articulo de las hot news
                         Picasso.with(parentContext)
                             .load(response!!.body()!!.articles!![0].urlToImage)
                             .into(top_image)
 
-                        top_title.text = response!!.body()!!.articles!![0].title
-                        top_author.text = response!!.body()!!.articles!![0].author
-
-                        webHotUrl = response!!.body()!!.articles!![0].url
+                        top_title.text = "Notícies de la OMS i salut"
 
                         //Cargar el resto de articulos
-                        val removeFirstItem = response!!.body()!!.articles
+                        val listItem = response!!.body()!!.articles
 
-                        //Como hemos obtenido el primer objeto de las hot news, tenemos que eliminarlo
-                        removeFirstItem!!.removeAt(0)
+                        //El primer objeto de las hot news es un duplicado, tenemos que eliminarlo
+                        listItem!!.removeAt(0)
 
-                        adapter = ListNewsAdapter(removeFirstItem!!, parentContext)
+                        adapter = ListNewsAdapter(listItem!!, parentContext)
                         adapter.notifyDataSetChanged()
                         list_news.adapter = adapter
 
                     }
-
                 })
         }
         else{
             swipe_to_refresh.isRefreshing = true
-            mService.getNewsFromSource("https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be")
+            mService.getNewsFromSource(webHotUrl)
                 .enqueue(object : retrofit2.Callback<News> {
                     override fun onFailure(call: Call<News>, t: Throwable) {
                         TODO("Not yet implemented")
@@ -133,26 +126,24 @@ class NewsFragment : Fragment() {
 
                         //Obtener primer articulo de las hot news
 
-                        if(response!!.body()!!.articles!![0].urlToImage == null){
+                        if(response!!.body()!!.articles!![0].urlToImage == null){// si no hay imagen disponible se carga una por defecto
                             response!!.body()!!.articles!![0].urlToImage = "https://www.eventoplus.com/content/thumbs/960_540/content/imgsxml/galerias/noticias/6883/big-comunicado-oms-urgencias652.jpg"
                         }
 
+                        //Cargamos la imagen del primer articulo si esta disponible
                         Picasso.with(parentContext)
                             .load(response!!.body()!!.articles!![0].urlToImage)
                             .into(top_image)
 
-                        top_title.text = response!!.body()!!.articles!![0].title
-                        top_author.text = response!!.body()!!.articles!![0].author
-
-                        webHotUrl = response!!.body()!!.articles!![0].url
+                        top_title.text = "Notícies de la OMS i salut"
 
                         //Cargar el resto de articulos
-                        val removeFirstItem = response!!.body()!!.articles
+                        val listItem = response!!.body()!!.articles
 
-                        //Como hemos obtenido el primer objeto de las hot news, tenemos que eliminarlo
-                        removeFirstItem!!.removeAt(0)
+                        //El primer objeto de las hot news es un duplicado, tenemos que eliminarlo
+                        listItem!!.removeAt(0)
 
-                        adapter = ListNewsAdapter(removeFirstItem!!, parentContext)
+                        adapter = ListNewsAdapter(listItem!!, parentContext)
                         adapter.notifyDataSetChanged()
                         list_news.adapter = adapter
                     }
