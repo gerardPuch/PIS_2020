@@ -22,13 +22,13 @@ import kotlinx.coroutines.tasks.await
 
 class SintomasActivity : AppCompatActivity() {
 
-    val sintomasReference = Sintomas()
-    lateinit var listView: ListView
+    private val sintomasReference = Sintomas()
+    lateinit private var listView: ListView
     //https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
-    val db = FirebaseFirestore.getInstance()
-    val TAG = "SintomasActivity"
+    private val db = FirebaseFirestore.getInstance()
+    private val TAG = "SintomasActivity"
 
-    lateinit var selectedSintomas: ArrayList<String>
+    lateinit private var selectedSintomas: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +38,10 @@ class SintomasActivity : AppCompatActivity() {
 
         //var selectedSintomas = intent.getIntegerArrayListExtra("selecteds")
 
-        settingIllnessDB()
+        //settingIllnessDB()
 
         val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
-        //val all_Illness: MutableList<Illness> = mutableListOf()
-        getIllnessDB(all_Illness)
+        //getIllnessDB(all_Illness)
 
         //val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
         val listItems = searchIllnessCoincidence(all_Illness, arrayListOf(0,1,2,3))
@@ -56,23 +55,8 @@ class SintomasActivity : AppCompatActivity() {
         listView.adapter = adapter
     }
 
-    fun correctResult(list: MutableList<Illness>) {
-        var listSize = list.size
-        var maxValue = 0
-        list.forEach {
-            if (it.getIllnessCoincidenceValue() > maxValue){
-                maxValue = it.getIllnessCoincidenceValue()
-            }
-        }
-
-        var colorValue = 0
-        list.forEach {
-            colorValue = (it.getIllnessCoincidenceValue()*100)/maxValue
-            it.setIllnessCoincidenceColor(colorValue)
-        }
-    }
-
-    fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: ArrayList<Int>): MutableList<Illness>{
+    //Función que devuelve una lista de las enfermedades con 2 o mas sintomas coincidentes.
+    private fun searchIllnessCoincidence(illness: MutableList<Illness>, sintomas: ArrayList<Int>): MutableList<Illness>{
         var resultList: MutableList<Illness> = mutableListOf()
         var counter = 0
         //Busqueda Secuencial O(n)
@@ -94,25 +78,21 @@ class SintomasActivity : AppCompatActivity() {
         }
         return resultList
     }
-    //https://medium.com/kotlin-en-android/coroutines-con-kotlin-suspend-functions-9f9994ddd713
-    fun getIllnessDB(dbList: MutableList<Illness>){
-        val coleccio = db.collection("illness")
-        coleccio
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                    var instance = Illness(
-                        document.data["illnessName"] as String,
-                        document.data["illnessCauses"] as ArrayList<String>,
-                        document.data["illnessSintomas"] as MutableList<Int>,
-                        document.data["illnessRemedies"] as MutableList<String>)
-                    dbList.add(instance)
-                }
+
+    private fun correctResult(list: MutableList<Illness>) {
+        var listSize = list.size
+        var maxValue = 0
+        list.forEach {
+            if (it.getIllnessCoincidenceValue() > maxValue){
+                maxValue = it.getIllnessCoincidenceValue()
             }
-            .addOnFailureListener{ exception ->
-                Log.w(TAG, "Error getting documents", exception)
-            }
+        }
+
+        var colorValue = 0
+        list.forEach {
+            colorValue = (it.getIllnessCoincidenceValue()*100)/maxValue
+            it.setIllnessCoincidenceColor(colorValue)
+        }
     }
 
     fun getHARDCODEDIllnessDB(): ArrayList<Illness> {
@@ -139,15 +119,6 @@ class SintomasActivity : AppCompatActivity() {
         illness_1.addIllnessRemedy("Nitrats sublinguals, si no para anar al metge!")
         illness_1.addIllnessRemedy("Betabloquejants, Calciantagonistes, Nitrats, Ivabradina")
 
-        //
-        val illness_A :Illness = Illness("D")
-        illness_A.addIllnessSintoma(0)
-        illness_A.addIllnessSintoma(1)
-        illness_A.addIllnessSintoma(2)
-        illness_A.addIllnessSintoma(3)
-        illnessList.add(illness_A)
-
-        illnessList.add(illness_1)
 
         return illnessList
     }
@@ -200,5 +171,26 @@ class SintomasActivity : AppCompatActivity() {
             }*/
 
         Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
+    }
+
+    //
+    fun getIllnessDB(dbList: MutableList<Illness>){
+        val coleccio = db.collection("illness")
+        coleccio
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                    var instance = Illness(
+                        document.data["illnessName"] as String,
+                        document.data["illnessCauses"] as ArrayList<String>,
+                        document.data["illnessSintomas"] as MutableList<Int>,
+                        document.data["illnessRemedies"] as MutableList<String>)
+                    dbList.add(instance)
+                }
+            }
+            .addOnFailureListener{ exception ->
+                Log.w(TAG, "Error getting documents", exception)
+            }
     }
 }

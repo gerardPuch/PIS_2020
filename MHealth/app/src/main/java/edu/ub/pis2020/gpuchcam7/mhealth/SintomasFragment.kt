@@ -110,14 +110,16 @@ class SintomasFragment : Fragment() {
             SintomasFragment().apply {}
     }
 
-    fun openActivity() {
+
+    private fun openActivity() {
         var selected = substractSintomasChecked()
         val intent = Intent(activity, SintomasActivity::class.java)
         intent.putIntegerArrayListExtra("selecteds", selected)
         startActivity(intent)
     }
 
-    fun substractSintomasChecked(): ArrayList<Int>{
+    //Función que devuelve el ID de los sintomas marcados
+    private fun substractSintomasChecked(): ArrayList<Int>{
         var result = arrayListOf<Int>()
         var spinners = mutableListOf<Spinner>(S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16)
 
@@ -149,27 +151,11 @@ class SintomasFragment : Fragment() {
                 result.add(ListSintomas.getSintomaID(it.text.toString()))
             }
         }
-
-        /*for (it in spinners){
-            for (i in 0..it.adapter.count-1){ // numero de SpinnerItems
-                var aux = it.adapter.getItem(i) as SpinnerItem
-                var check = CheckBox(context)
-                check.text = aux.getTextItem()
-                check.isChecked = aux.isSelected()
-                checkBoxes.add(check)
-            }
-        }
-
-        for (it in checkBoxes){
-            if(it.isChecked){
-                result.add(it.text.toString())
-            }
-        }*/
-
         return result
     }
 
-    fun setSintomas(){
+    //Función que asocia cada checkbox e spinner con sus respectivo sintoma
+    private fun setSintomas(){
 
         Sintoma0.setText(ListSintomas.getSintoma(0))
         Sintoma1.setText(ListSintomas.getSintoma(1))

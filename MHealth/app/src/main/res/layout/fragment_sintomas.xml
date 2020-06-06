@@ -27,6 +27,15 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
 
+        <CheckBox
+            android:id="@+id/SintomaAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/next_button"
+            android:text="Totes"
+            android:textColor="@color/colorBackground"
+            android:buttonTint="@color/colorIcon"/>
+
         <ScrollView
             android:layout_width="246dp"
             android:layout_height="548dp"

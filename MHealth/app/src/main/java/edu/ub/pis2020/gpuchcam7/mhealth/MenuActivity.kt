@@ -14,7 +14,7 @@ import android.view.View
 import edu.ub.pis2020.gpuchcam7.mhealth.ui.main.SectionsPagerAdapter
 
 class MenuActivity : AppCompatActivity() {
-    lateinit var context: Context
+    lateinit private var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

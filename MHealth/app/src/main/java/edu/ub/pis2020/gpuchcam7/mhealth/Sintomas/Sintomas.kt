@@ -165,14 +165,22 @@ class Sintomas {
         var name = ListSintomas[position]
         var code = ""
         when (position){
-            7,8 -> code = "_A"
-            12,13 -> code = "_DE"
-            18,19,20,21,22,23,24,25,26 -> code = "_D"
-            28 -> code = "_AT"
-            35 -> code = "_I"
-            46 -> code = "_SE"
-            48,49 -> code = "_R"
-            51,52 -> code = "_S"
+            12,13 -> code = "_A"
+            17,18 -> code = "_B"
+            23,24,25,26,27,28 -> code = "_DE"
+            35,36,37,38,39,40,41,42,43,44,45,46,47,48 -> code = "_D"
+            50,51,52,53,54 -> code = "_AT"
+            61,62 -> code = "_F"
+            68,69,70 -> code = "_I"
+            82,83,84,85,86,87 -> code = "_PA"
+            94,95,96,97,98,99 -> code = "_SE"
+            101,102 -> code = "_PI"
+            104,105 -> code = "_P"
+            107,108 -> code = "_R"
+            114,115,116,117 -> code = "_S"
+            120,121,122 -> code = "_EX"
+            127,128,129,130,131 -> code = "_TA"
+            134,135,136 -> code = "_T"
         }
         return name.removeSuffix(code)
     }
@@ -181,13 +189,21 @@ class Sintomas {
         var code = ""
         when (parent){
             "Arritmies" -> code = "_A"
+            "Butllofes" -> code = "_B"
             "Debilitat" -> code = "_DE"
             "Dolor" -> code = "_D"
             "Dolor articulacions" -> code = "_AT"
-            "Inflat" -> code = "_I"
+            "Femtes" -> code = "_F"
+            "Inflamació" -> code = "_I"
+            "Paràlisi" -> code = "_PA"
             "Pèrdua de sensibilitat" -> code = "_SE"
+            "Picor" -> code = "_PI"
+            "Pupiles" -> code = "_P"
             "Respiració" -> code = "_R"
             "Sagnat" -> code = "_S"
+            "Sensacions extranyes" -> code = "_EX"
+            "Taques a la pell" -> code = "_TA"
+            "Tos" -> code = "_T"
         }
         return name+code
     }
