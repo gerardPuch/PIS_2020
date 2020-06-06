@@ -50,7 +50,7 @@
             android:text="ILLNESS NAME"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"/>

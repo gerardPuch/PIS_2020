@@ -2,6 +2,7 @@ package edu.ub.pis2020.gpuchcam7.mhealth.Sintomas
 
 import android.content.Context
 import android.content.Intent
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,7 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
 
         if(listItems.get(position).getIllnessCoincidenceValue() == 0){
             holder.mCoincidenceFrame.visibility = View.GONE
+            holder.mTextView.gravity = Gravity.CENTER_HORIZONTAL
         }
 
         isFromView = false

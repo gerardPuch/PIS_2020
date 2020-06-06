@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.core.view.size
@@ -20,6 +21,7 @@ import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
 import kotlinx.android.synthetic.main.activity_sintomas.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
+import org.w3c.dom.Text
 
 class SintomasActivity : AppCompatActivity() {
 
@@ -55,7 +57,10 @@ class SintomasActivity : AppCompatActivity() {
             //listItems = searchIllnessCoincidence(all_Illness, arrayListOf(0,1,2,3))
 
             if(listItems.size == 0){
-                textView_sintomas_activity.text = " No s'ha trobat cap enfermetat, \n Prova de seleccionar més Símptomes "
+                textView_sintomas_activity.text = "No s'ha trobat cap enfermetat, prova de seleccionar més Símptomes"
+                if(selectedSintomas.size == 1){
+                    textView_sintomas_activity.text = "Amb un sol símptoma no es pot determinar cap enfermetat"
+                }
             }
         }else{
             listItems = all_Illness

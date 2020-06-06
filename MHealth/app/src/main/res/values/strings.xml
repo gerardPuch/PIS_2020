@@ -4,19 +4,6 @@
     <string name="tab_text_1">SINTOMES</string>
     <string name="tab_text_3">PRIMERS AUXILIS</string>
     <string name="tab_text_2">NOTÍCIES</string>
-    <string name="Sintoma_1">Mareig</string>
-    <string name="Sintoma_2">DOLOR</string>
-    <string name="Sintoma_3">Febre</string>
-    <string name="Sintoma_4">Nauseas</string>
-    <string name="Sintoma_5">Disnea</string>
-    <string name="Sintoma_6">Diarrea</string>
-    <string name="Sintoma_7">SAGNAT</string>
-    <string name="Sintoma_8">Alucinacions</string>
-    <string name="Sintoma_9">Pèrdua de coneixement</string>
-    <string name="Sintoma_10">Tos</string>
-    <string name="Sintoma_11">Mocs</string>
-    <string name="Sintoma_12">Gola seca</string>
-    <string name="Sintoma_13">ARRITMIES</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
