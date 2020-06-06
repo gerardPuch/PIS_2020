@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,7 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
             holder = ViewHolderIllness(view)
             holder.mTextView = view.illness_name
             holder.mCoincidenceNumber = view.illness_coincidence_number
+            holder.mCoincidenceFrame = view.coincidence_frame
             view.tag = holder //asocia el View y ViewHolder
         } else {//Coge el viewHolder
             view = convertView
@@ -62,6 +64,11 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
         }else if(listItems.get(position).getIllnessCoincidenceColor() > 80){
             holder.mCoincidenceNumber.setBackgroundResource(R.drawable.red_circle_illness)
         }
+
+        if(listItems.get(position).getIllnessCoincidenceValue() == 0){
+            holder.mCoincidenceFrame.visibility = View.GONE
+        }
+
         isFromView = false
 
         holder.itemView.setOnClickListener({
@@ -82,4 +89,5 @@ class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illne
 class ViewHolderIllness(itemView: View): RecyclerView.ViewHolder(itemView){
     lateinit var mTextView: TextView
     lateinit var mCoincidenceNumber: TextView
+    lateinit var mCoincidenceFrame: LinearLayout
 }

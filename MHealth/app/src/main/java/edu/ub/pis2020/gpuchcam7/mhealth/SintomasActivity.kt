@@ -14,6 +14,7 @@ import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.AdapterIllness
+import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.HarcodedDataBase
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Illness
 import edu.ub.pis2020.gpuchcam7.mhealth.Sintomas.Sintomas
 import kotlinx.android.synthetic.main.activity_sintomas.*
@@ -25,6 +26,7 @@ class SintomasActivity : AppCompatActivity() {
     private val sintomasReference = Sintomas()
     lateinit private var listView: ListView
     //https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin
+
     private val db = FirebaseFirestore.getInstance()
     private val TAG = "SintomasActivity"
 
@@ -33,22 +35,35 @@ class SintomasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sintomas)
-
         listView = findViewById(R.id.found_sintomas)
 
-        //var selectedSintomas = intent.getIntegerArrayListExtra("selecteds")
+        //Obtenemos el Boolean que determina si se muestran todas las enfermedades
+        var allSelected = intent.getBooleanExtra("allSelected", true)
 
         //settingIllnessDB()
 
-        val all_Illness: MutableList<Illness> = getHARDCODEDIllnessDB()
+        val all_Illness: MutableList<Illness> = HarcodedDataBase().getHardcodedData() //base de datos local que contiene todas las enfermedades
         //getIllnessDB(all_Illness)
 
-        //val listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
-        val listItems = searchIllnessCoincidence(all_Illness, arrayListOf(0,1,2,3))
+        var listItems = mutableListOf<Illness>() //Resultado de la búsqueda
 
-        //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
-        correctResult(listItems)
+        if(allSelected == false){
+            var selectedSintomas = intent.getIntegerArrayListExtra("selecteds") //IDs de los sintomas seleccionados
 
+            //Obtenemos todas las enfermedades que coincidan con los sintomas seleccionados
+            listItems = searchIllnessCoincidence(all_Illness, selectedSintomas)
+            //listItems = searchIllnessCoincidence(all_Illness, arrayListOf(0,1,2,3))
+
+            if(listItems.size == 0){
+                textView_sintomas_activity.text = " No s'ha trobat cap enfermetat, \n Prova de seleccionar més Símptomes "
+            }
+        }else{
+            listItems = all_Illness
+
+            if(listItems.size == 0){
+                textView_sintomas_activity.text = " No hi han enfermetats que mostrar "
+            }
+        }
 
         //Asociar adapter
         val adapter = AdapterIllness(this, 0, listItems)
@@ -73,13 +88,11 @@ class SintomasActivity : AppCompatActivity() {
                 resultList.add(item)
             }
         }
-        if(resultList.isEmpty()){
-            textView_sintomas_activity.text = "No s'han trobat coincidencies"
-        }
-        return resultList
+        //Corrige los resultados: estableciendo el porcentaje de coincidencia y asignando un color al indice de coincidencia
+        return correctResult(resultList)
     }
 
-    private fun correctResult(list: MutableList<Illness>) {
+    private fun correctResult(list: MutableList<Illness>): MutableList<Illness> {
         var listSize = list.size
         var maxValue = 0
         list.forEach {
@@ -93,34 +106,10 @@ class SintomasActivity : AppCompatActivity() {
             colorValue = (it.getIllnessCoincidenceValue()*100)/maxValue
             it.setIllnessCoincidenceColor(colorValue)
         }
-    }
 
-    fun getHARDCODEDIllnessDB(): ArrayList<Illness> {
-        //HARDCODED EJEMPLO
-        var illnessList = arrayListOf<Illness>()
+        //list.sortBy { it.getIllnessCoincidenceValue() }
 
-        val illness_1 :Illness = Illness("Angina de pit")
-        //Causes
-        illness_1.addIllnessCause("Ateroesclerosis coronària")
-        //Simpotems
-        illness_1.addIllnessSintoma(25) //Pit_D
-        illness_1.addIllnessSintoma(20) //Coll_D
-        illness_1.addIllnessSintoma(16) //Disnea
-        illness_1.addIllnessSintoma(36) //Mareig
-        illness_1.addIllnessSintoma(42) //Pèrdua de coneixement
-        illness_1.addIllnessSintoma(40) //Palidesa
-        illness_1.addIllnessSintoma(59) //Suor
-        illness_1.addIllnessSintoma(51) //Taquipnea_R
-        //illness_1.addIllnessSintoma() // Esquena_D
-        //illness_1.addIllnessSintoma() // Braç esquerra_D
-        //illness_1.addIllnessSintoma() // Mandibula_D
-        //Remeis
-        illness_1.addIllnessRemedy("Si és la primera vegada anar al metge")
-        illness_1.addIllnessRemedy("Nitrats sublinguals, si no para anar al metge!")
-        illness_1.addIllnessRemedy("Betabloquejants, Calciantagonistes, Nitrats, Ivabradina")
-
-
-        return illnessList
+        return list
     }
 
     fun settingIllnessDB(){

@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.spinner_item.view.*
  */
 class SintomasFragment : Fragment() {
 
-    lateinit var ListSintomas: Sintomas
+    lateinit private var ListSintomas: Sintomas
 
     lateinit var S1: Spinner; lateinit var ListS1: MutableList<SpinnerItem>
     lateinit var S2: Spinner; lateinit var ListS2: MutableList<SpinnerItem>
@@ -51,7 +51,6 @@ class SintomasFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         this.ListSintomas = Sintomas()
     }
 
@@ -94,7 +93,11 @@ class SintomasFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_sintomas, container, false)
 
         view.btnNext.setOnClickListener { view ->
-            openActivity()
+            openActivity(false)
+        }
+
+        view.btnAll.setOnClickListener { view ->
+            openActivity(true)
         }
 
         return view
@@ -111,11 +114,20 @@ class SintomasFragment : Fragment() {
     }
 
 
-    private fun openActivity() {
-        var selected = substractSintomasChecked()
-        val intent = Intent(activity, SintomasActivity::class.java)
-        intent.putIntegerArrayListExtra("selecteds", selected)
-        startActivity(intent)
+    private fun openActivity(allSelected: Boolean) {
+        if(allSelected == true){
+            var selected = arrayListOf<Int>()
+            val intent = Intent(activity, SintomasActivity::class.java)
+            intent.putIntegerArrayListExtra("selecteds", selected)
+            intent.putExtra("allSelected", allSelected)
+            startActivity(intent)
+        }else{
+            var selected = substractSintomasChecked()
+            val intent = Intent(activity, SintomasActivity::class.java)
+            intent.putIntegerArrayListExtra("selecteds", selected)
+            intent.putExtra("allSelected", allSelected)
+            startActivity(intent)
+        }
     }
 
     //Función que devuelve el ID de los sintomas marcados

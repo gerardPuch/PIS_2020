@@ -8,14 +8,14 @@ class HarcodedDataBase {
         //Causes
         illness_1.addIllnessCause("Ateroesclerosis coronària")
         //Simpotems
-        illness_1.addIllnessSintoma(25) //Pit_D
-        illness_1.addIllnessSintoma(20) //Coll_D
-        illness_1.addIllnessSintoma(16) //Disnea
-        illness_1.addIllnessSintoma(36) //Mareig
-        illness_1.addIllnessSintoma(42) //Pèrdua de coneixement
-        illness_1.addIllnessSintoma(40) //Palidesa
-        illness_1.addIllnessSintoma(59) //Suor
-        illness_1.addIllnessSintoma(51) //Taquipnea_R
+        illness_1.addIllnessSintoma(0) //Pit_D
+        illness_1.addIllnessSintoma(1) //Coll_D
+        illness_1.addIllnessSintoma(2) //Disnea
+        illness_1.addIllnessSintoma(3) //Mareig
+        illness_1.addIllnessSintoma(4) //Pèrdua de coneixement
+        illness_1.addIllnessSintoma(5) //Palidesa
+        illness_1.addIllnessSintoma(6) //Suor
+        illness_1.addIllnessSintoma(7) //Taquipnea_R
         //illness_1.addIllnessSintoma() // Esquena_D
         //illness_1.addIllnessSintoma() // Braç esquerra_D
         //illness_1.addIllnessSintoma() // Mandibula_D
