@@ -14,10 +14,10 @@ import kotlinx.android.synthetic.main.spinner_item.view.*
 
 
 class AdapterSpinner(context: Context, resource: Int, objects: MutableList<SpinnerItem>): ArrayAdapter<SpinnerItem>(context, resource, objects) {
-    lateinit var mContext: Context
-    lateinit var listState: MutableList<SpinnerItem>
-    lateinit var myAdapter: AdapterSpinner
-    var isFromView: Boolean = false
+    lateinit private var mContext: Context
+    lateinit private var listState: MutableList<SpinnerItem>
+    lateinit private var myAdapter: AdapterSpinner
+    private var isFromView: Boolean = false
 
     init {
         this.mContext = context
