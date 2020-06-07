@@ -32,22 +32,22 @@ class SintomasFragment : Fragment() {
 
     lateinit private var ListSintomas: Sintomas
 
-    lateinit var S1: Spinner; lateinit var ListS1: MutableList<SpinnerItem>
-    lateinit var S2: Spinner; lateinit var ListS2: MutableList<SpinnerItem>
-    lateinit var S3: Spinner; lateinit var ListS3: MutableList<SpinnerItem>
-    lateinit var S4: Spinner; lateinit var ListS4: MutableList<SpinnerItem>
-    lateinit var S5: Spinner; lateinit var ListS5: MutableList<SpinnerItem>
-    lateinit var S6: Spinner; lateinit var ListS6: MutableList<SpinnerItem>
-    lateinit var S7: Spinner; lateinit var ListS7: MutableList<SpinnerItem>
-    lateinit var S8: Spinner; lateinit var ListS8: MutableList<SpinnerItem>
-    lateinit var S9: Spinner; lateinit var ListS9: MutableList<SpinnerItem>
-    lateinit var S10: Spinner; lateinit var ListS10: MutableList<SpinnerItem>
-    lateinit var S11: Spinner; lateinit var ListS11: MutableList<SpinnerItem>
-    lateinit var S12: Spinner; lateinit var ListS12: MutableList<SpinnerItem>
-    lateinit var S13: Spinner; lateinit var ListS13: MutableList<SpinnerItem>
-    lateinit var S14: Spinner; lateinit var ListS14: MutableList<SpinnerItem>
-    lateinit var S15: Spinner; lateinit var ListS15: MutableList<SpinnerItem>
-    lateinit var S16: Spinner; lateinit var ListS16: MutableList<SpinnerItem>
+    lateinit private var S1: Spinner; lateinit private var ListS1: MutableList<SpinnerItem>
+    lateinit private var S2: Spinner; lateinit private var ListS2: MutableList<SpinnerItem>
+    lateinit private var S3: Spinner; lateinit private var ListS3: MutableList<SpinnerItem>
+    lateinit private var S4: Spinner; lateinit private var ListS4: MutableList<SpinnerItem>
+    lateinit private var S5: Spinner; lateinit private var ListS5: MutableList<SpinnerItem>
+    lateinit private var S6: Spinner; lateinit private var ListS6: MutableList<SpinnerItem>
+    lateinit private var S7: Spinner; lateinit private var ListS7: MutableList<SpinnerItem>
+    lateinit private var S8: Spinner; lateinit private var ListS8: MutableList<SpinnerItem>
+    lateinit private var S9: Spinner; lateinit private var ListS9: MutableList<SpinnerItem>
+    lateinit private var S10: Spinner; lateinit private var ListS10: MutableList<SpinnerItem>
+    lateinit private var S11: Spinner; lateinit private var ListS11: MutableList<SpinnerItem>
+    lateinit private var S12: Spinner; lateinit private var ListS12: MutableList<SpinnerItem>
+    lateinit private var S13: Spinner; lateinit private var ListS13: MutableList<SpinnerItem>
+    lateinit private var S14: Spinner; lateinit private var ListS14: MutableList<SpinnerItem>
+    lateinit private var S15: Spinner; lateinit private var ListS15: MutableList<SpinnerItem>
+    lateinit private var S16: Spinner; lateinit private var ListS16: MutableList<SpinnerItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

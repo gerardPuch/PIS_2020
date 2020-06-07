@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import edu.ub.pis2020.gpuchcam7.mhealth.R
 
 private val TAB_TITLES = arrayOf(
@@ -33,5 +35,22 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     override fun getCount(): Int {
         // Show 3 total pages.
         return 2
+    }
+    class PageViewModel : ViewModel() {
+
+        private val _index = MutableLiveData<Int>()
+
+        fun setIndex(index: Int) {
+            _index.value = index
+        }
+    }
+}
+
+class PageViewModel : ViewModel() {
+
+    private val _index = MutableLiveData<Int>()
+
+    fun setIndex(index: Int) {
+        _index.value = index
     }
 }

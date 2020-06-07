@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.news_layout.view.*
 import java.text.ParseException
 import java.util.*
 
+//Adapter del view de cada noticia
 class ListNewsAdapter(val articleList:MutableList<Articles>, private val context: Context) :RecyclerView.Adapter<ListNewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListNewsViewHolder {
         var inflater = LayoutInflater.from(parent!!.context)

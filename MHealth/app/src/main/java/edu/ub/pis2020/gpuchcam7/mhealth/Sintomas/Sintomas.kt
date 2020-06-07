@@ -147,10 +147,12 @@ class Sintomas {
         "Xiulets al respirar"//142
     )
 
+    //Devuelve el numero de sintomas
     fun getNumSintomas(): Int{
         return ListSintomas.size
     }
 
+    //Devuelve el id de un sintoma pasando por parametro el codigo de este
     fun getSintomaID(name: String): Int{
         if(ListSintomas.contains(name)){
             return ListSintomas.indexOf(name)
@@ -158,9 +160,12 @@ class Sintomas {
         return -1
     }
 
+    //Devuelve el codigo de un sintoma dando su id
     fun getSintoma(position: Int) :String{
         return ListSintomas[position]
     }
+
+    //Devuelve el texto de un sintoma dando su id, eliminando el codigo si lo tiene
     fun getNameSintoma(position: Int):String{
         var name = ListSintomas[position]
         var code = ""
@@ -185,6 +190,7 @@ class Sintomas {
         return name.removeSuffix(code)
     }
 
+    //Deveulve el codigo de un sintoma, pasando el texto y la categoria a la que pertenece
     fun getCodeSintoma(name: String, parent: String) :String{
         var code = ""
         when (parent){
