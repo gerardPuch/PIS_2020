@@ -117,7 +117,8 @@ class SintomasActivity : AppCompatActivity() {
         return list
     }
 
-    fun settingIllnessDB(){
+    //Funcion que se suaria en la primera ejecucion del codigo para añadir al Firebase todas las Illness, despues seria necesario comentarlo
+    private fun settingIllnessDB(){
         var illnessList = arrayListOf<Illness>()
 
         val illness_A :Illness = Illness("A")
@@ -132,29 +133,6 @@ class SintomasActivity : AppCompatActivity() {
             .addOnSuccessListener { documentReference -> Log.d(TAG, "DocumentSnapshot succesfully written!") }
             .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
 
-
-        val illness_B :Illness = Illness("B")
-        illness_B.addIllnessSintoma(0)
-        illness_B.addIllnessSintoma(1)
-        illness_B.addIllnessSintoma(2)
-        illnessList.add(illness_B)
-
-        db.collection("illness").document(illness_B.getIllnessName())
-            .set(illness_B)
-            .addOnSuccessListener { documentReference -> Log.d(TAG, "DocumentSnapshot succesfully written!") }
-            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
-
-
-        val illness_C :Illness = Illness("C")
-        illness_C.addIllnessSintoma(0)
-        illness_C.addIllnessSintoma(1)
-        illnessList.add(illness_C)
-
-        db.collection("illness").document(illness_C.getIllnessName())
-            .set(illness_C)
-            .addOnSuccessListener { documentReference ->Log.d(TAG, "DocumentSnapshot succesfully written!") }
-            .addOnFailureListener {e -> Log.w(TAG, "Error writting document", e) }
-
         /*db.collection("illness")
             .add(illness_db)
             .addOnSuccessListener { documentReference ->
@@ -167,7 +145,7 @@ class SintomasActivity : AppCompatActivity() {
         Toast.makeText(this, "CoronaVirus añadido a la coleccion", Toast.LENGTH_SHORT).show()
     }
 
-    //
+    //Funcion que carga y devuelve la lista de Illness des de el Firebase NO FUNCIONA
     fun getIllnessDB(dbList: MutableList<Illness>){
         val coleccio = db.collection("illness")
         coleccio

@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.illness_item.view.*
 import java.util.ArrayList
 
 class AdapterIllness(context: Context, resource: Int, objects: MutableList<Illness>): ArrayAdapter<Illness>(context, resource, objects) {
-    lateinit var mContext: Context
-    lateinit var listItems: MutableList<Illness>
-    lateinit var myAdapter: AdapterIllness
-    var isFromView: Boolean = false
+    lateinit private var mContext: Context
+    lateinit private var listItems: MutableList<Illness>
+    lateinit private var myAdapter: AdapterIllness
+    private var isFromView: Boolean = false
 
     init {
         this.mContext = context
