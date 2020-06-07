@@ -153,7 +153,7 @@ class SintomasFragment : Fragment() {
             for (i in 0..it.adapter.count-1){ // numero de SpinnerItems
                 var aux = it.adapter.getItem(i) as SpinnerItem
                 if(aux.isSelected()){
-                    result.add(ListSintomas.getSintomaID(ListSintomas.getCodeSintoma(aux.text, spinnerName)))
+                    result.add(ListSintomas.getSintomaID(ListSintomas.getCodeSintoma(aux.getTextItem(), spinnerName)))
                 }
             }
         }

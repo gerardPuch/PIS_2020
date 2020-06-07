@@ -1,9 +1,9 @@
 package edu.ub.pis2020.gpuchcam7.mhealth.Sintomas
 
 class SpinnerItem {
-    lateinit var text: String
-    var selected: Boolean = false
-    var id: Int = -1
+    lateinit private var text: String
+    private var selected: Boolean = false
+    private var id: Int = -1
 
     fun setTextItem(new: String){
         this.text = new
