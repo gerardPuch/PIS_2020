@@ -26,14 +26,14 @@ import retrofit2.Response
  */
 class NewsFragment : Fragment() {
 
-    var webHotUrl: String = "https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be"
+    private var webHotUrl: String = "https://newsapi.org/v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be"
 
-    lateinit var dialog: AlertDialog
-    lateinit var mService: NewsService
-    lateinit var adapter: ListNewsAdapter
-    lateinit var layoutManager: LinearLayoutManager
+    lateinit private var dialog: AlertDialog
+    lateinit private var mService: NewsService
+    lateinit private var adapter: ListNewsAdapter
+    lateinit private var layoutManager: LinearLayoutManager
 
-    lateinit var parentContext: Context
+    lateinit private var parentContext: Context
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)

@@ -13,15 +13,15 @@ import kotlinx.android.synthetic.main.activity_illness.*
 
 class IllnessActivity : AppCompatActivity() {
 
-    lateinit var recievedCauses : ArrayList<String>
-    lateinit var recievedSintomas : ArrayList<Int>
-    lateinit var recievedRemedies : ArrayList<String>
+    lateinit private var recievedCauses : ArrayList<String>
+    lateinit private var recievedSintomas : ArrayList<Int>
+    lateinit private var recievedRemedies : ArrayList<String>
 
-    lateinit var listCauses: ListView
-    lateinit var listSintomas: ListView
-    lateinit var listRemedies: ListView
+    lateinit private var listCauses: ListView
+    lateinit private var listSintomas: ListView
+    lateinit private var listRemedies: ListView
 
-    val sintomasReference = Sintomas()
+    private val sintomasReference = Sintomas()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +59,7 @@ class IllnessActivity : AppCompatActivity() {
 
     }
 
-    fun getSintomasNames(sintomasIDs: ArrayList<Int>): ArrayList<String>{
+    private fun getSintomasNames(sintomasIDs: ArrayList<Int>): ArrayList<String>{
         var result = arrayListOf<String>()
         for (id in sintomasIDs){
             result.add(sintomasReference.getNameSintoma(id))
