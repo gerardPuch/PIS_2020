@@ -4,8 +4,8 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url
 
-interface NewsService {
-    @get:GET("v2/sources?apiKey=52d4d09a2cdc408a8e7b94bac7ba97be")
+interface NewsService { //endpoints interface, necesaria para obtener informacion del source
+    @get:GET("v2/everything?q=OMS&language=es&apiKey=52d4d09a2cdc408a8e7b94bac7ba97be")
     val sources: Call<Website>
 
     @GET

@@ -3,11 +3,13 @@ package edu.ub.pis2020.gpuchcam7.mhealth.News
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import edu.ub.pis2020.gpuchcam7.mhealth.NewDetailActivity
 import edu.ub.pis2020.gpuchcam7.mhealth.R
+import kotlinx.android.synthetic.main.news_layout.view.*
 import java.text.ParseException
 import java.util.*
 
@@ -54,4 +56,10 @@ class ListNewsAdapter(val articleList:MutableList<Articles>, private val context
             context.startActivity(detail)
         }
     }
+}
+
+class ListNewsViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
+    var article_title = itemView.article_title
+    var article_time = itemView.article_time
+    var article_image = itemView.article_image
 }
