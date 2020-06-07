@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_new_detail.*
 
 class NewDetailActivity : AppCompatActivity() {
 
-    lateinit var alertDialog: AlertDialog
+    lateinit private var alertDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

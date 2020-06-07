@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MHealth</string>
     <string name="title_activity_menu">MenuActivity</string>
-    <string name="tab_text_1">SINTOMES</string>
+    <string name="tab_text_1">SÍMPTOMES</string>
     <string name="tab_text_3">PRIMERS AUXILIS</string>
     <string name="tab_text_2">NOTÍCIES</string>
 

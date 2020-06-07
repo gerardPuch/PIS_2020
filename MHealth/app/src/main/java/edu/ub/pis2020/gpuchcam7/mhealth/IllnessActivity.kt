@@ -62,7 +62,7 @@ class IllnessActivity : AppCompatActivity() {
     private fun getSintomasNames(sintomasIDs: ArrayList<Int>): ArrayList<String>{
         var result = arrayListOf<String>()
         for (id in sintomasIDs){
-            result.add(sintomasReference.getNameSintoma(id))
+            result.add(sintomasReference.getSintoma(id))
         }
         return result
     }

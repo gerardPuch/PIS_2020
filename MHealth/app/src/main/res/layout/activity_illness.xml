@@ -7,16 +7,11 @@
     tools:context=".IllnessActivity"
     android:background="@color/colorBackground">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ScrollView>
     //Illness info
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:text="Causes:"
@@ -29,7 +24,7 @@
         <ListView
             android:id="@+id/illness_causes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="165dp" />
 
         <TextView
             android:text="Símptomes:"
@@ -42,7 +37,7 @@
         <ListView
             android:id="@+id/illness_sintomas"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="165dp"/>
 
         <TextView
             android:text="Remeis:"
@@ -55,13 +50,10 @@
         <ListView
             android:id="@+id/illness_remedies"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="175dp"/>
+            android:layout_height="165dp"/>
 
         </LinearLayout>
+
     <LinearLayout
         android:id="@+id/call_button_frame"
         android:layout_width="match_parent"
